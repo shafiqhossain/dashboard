@@ -1,0 +1,438 @@
+.dashboard {margin-top:20px;margin-bottom:20px;}
+.dashboard .dashboard-block-separator {border-top:1px solid #ccc;margin-top:5px;margin-bottom:2px;}
+.dashboard .dashboard-block-links {}
+.dashboard .dashboard-block-links .last-update-block {color:#888;font-size:9px;font-style:italic;}
+
+.dashboard .dashboard-block .dashboard-block-title {font-size: 18px;text-align: center;font-weight: bold;}
+.dashboard .dashboard-block .dashboard-block-date {font-size: 14px;text-align: center;border-bottom:1px solid #ccc;}
+.dashboard .dashboard-block .dashboard-block-amount {font-size: 50px;text-align: center;font-weight: bold;}
+.dashboard .dashboard-block .dashboard-block-amount-type {font-weight:bold;text-align: center;}
+.dashboard .dashboard-block .dashboard-block-label {font-weight:bold;text-align: center;}
+.dashboard .dashboard-block .dashboard-block-amount-percent {font-size: 16px;text-align: center;}
+.dashboard .dashboard-block .fa-sort-asc {font-size: 30px;color:#c13e11;vertical-align: text-bottom;}
+.dashboard .dashboard-block .fa-sort-desc {font-size: 30px;color:#88c136;vertical-align: text-top;}
+
+.dashboard .dashboard-row-1 {clear:both;}
+.dashboard .dashboard-row-1 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-1 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-1 .daily-total-rx-amount .dashboard-block-content {background: #01c1ea;color: #fff;border: 1px solid #01c1ea;}
+.dashboard .dashboard-row-1 .daily-total-rx-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-1 .daily-total-rx-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-1 .daily-total-rx-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-1 .daily-total-rx-amount .dashboard-block-links {background: #01aed3;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-1 .daily-total-rx-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-1 .daily-total-rx-amount .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-1 .daily-total-order-amount .dashboard-block-content {background: #00a663;color: #fff;border: 1px solid #00a663;}
+.dashboard .dashboard-row-1 .daily-total-order-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-1 .daily-total-order-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-1 .daily-total-order-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-1 .daily-total-order-amount .dashboard-block-links {background: #009659;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-1 .daily-total-order-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-1 .daily-total-order-amount .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-content {background: #f39b3a;color: #fff;border: 1px solid #f39b3a;}
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-1 .weekly-total-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-links {background: #db8c34;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-links a {color:#fff;}
+.dashboard .dashboard-row-1 .weekly-total-amount .dashboard-block-amount {font-size:28px;}
+
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-content {background: #f5685a;color: #fff;border: 1px solid #f5685a;}
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-1 .monthly-total-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-links {background: #dd5e51;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-links a {color:#fff;}
+.dashboard .dashboard-row-1 .monthly-total-amount .dashboard-block-amount {font-size:28px;}
+
+.dashboard .dashboard-row-2 {clear:both;}
+.dashboard .dashboard-row-2 .dashboard-block {float:left;width:33%;padding:5px 4px;}
+.dashboard .dashboard-row-2 .monthly-chart-rx-and-order {width:34%;}
+.dashboard .dashboard-row-2 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-3 {clear:both;}
+.dashboard .dashboard-row-3 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-3 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-3 .daily-rx-slit-created .dashboard-block-content {background: #603cba;color: #fff;border: 1px solid #603cba;}
+.dashboard .dashboard-row-3 .daily-rx-slit-created .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-3 .daily-rx-slit-created .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-3 .daily-rx-slit-created .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-3 .daily-rx-slit-created .dashboard-block-links {background: #5736a8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-3 .daily-rx-slit-created .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-3 .daily-rx-slit-created .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-3 .daily-rx-scit-created .dashboard-block-content {background: #00a300;color: #fff;border: 1px solid #00a300;}
+.dashboard .dashboard-row-3 .daily-rx-scit-created .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-3 .daily-rx-scit-created .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-3 .daily-rx-scit-created .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-3 .daily-rx-scit-created .dashboard-block-links {background: #009300;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-3 .daily-rx-scit-created .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-3 .daily-rx-scit-created .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .dashboard-block-content {background: #2d89ef;color: #fff;border: 1px solid #2d89ef;}
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .dashboard-block-links {background: #297cd8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-3 .daily-rx-slit-refills .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .dashboard-block-content {background: #ffb910;color: #fff;border: 1px solid #ffb910;}
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .dashboard-block-links {background: #e6b10c;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-3 .daily-rx-scit-refills .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-4 {clear:both;}
+.dashboard .dashboard-row-4 .dashboard-block {float:left;width:33%;padding:5px 5px;}
+.dashboard .dashboard-row-4 .monthly-slit-vs-scit {width:34%;}
+.dashboard .dashboard-row-4 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table {width:100%;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table th {padding:5px 5px;border:1px solid #ccc;text-align:center;background: #2e7aa2;color: #fff;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table td {padding:5px 5px;border:1px solid #ccc;text-align:center;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody tr:nth-child(even) {background: #f6f6f6}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody tr:nth-child(odd) {}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody td.month-name {color:#8674a6;font-weight:bold;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody td.created {color:#01c1ea;font-weight:bold;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody td.created a {color:#01c1ea;font-weight:bold;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody td.refill {color:#00a663;font-weight:bold;}
+.dashboard .dashboard-row-4 .slit-vs-scit-comparison-table tbody td.refill a {color:#00a663;font-weight:bold;}
+
+
+.dashboard .dashboard-row-5 {clear:both;}
+.dashboard .dashboard-row-5 .content-row-left {float:left;width:75%;}
+.dashboard .dashboard-row-5 .content-row-right {float:left;width:25%;background:#e54e52;padding: 5px;}
+.dashboard .dashboard-row-5 .content-row-left .dashboard-row-left-1 {}
+.dashboard .dashboard-row-5 .content-row-left .dashboard-row-left-1 .dashboard-block {float:left;width:33%;padding:5px 5px;}
+.dashboard .dashboard-row-5 .content-row-left .dashboard-row-left-2 {}
+.dashboard .dashboard-row-5 .content-row-left .dashboard-row-left-2 .dashboard-block {float:left;width:33%;padding:5px 5px;}
+.dashboard .dashboard-row-5 .content-row-right .dashboard-block {float:none;display:block;padding:5px 5px;}
+.dashboard .dashboard-row-5 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .dashboard-block-content {background: #418bca;color: #fff;border: 1px solid #418bca;}
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .dashboard-block-links {background: #3675aa;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-rx-successful-payment .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .dashboard-block-content {background: #5db85b;color: #fff;border: 1px solid #5db85b;}
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .dashboard-block-links {background: #4b9749;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-rx-refund-payment .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .dashboard-block-content {background: #efad4d;color: #fff;border: 1px solid #efad4d;}
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .dashboard-block-links {background: #cf9542;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-rx-invoice-payment .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .dashboard-block-content {background: #d95350;color: #fff;border: 1px solid #d95350;}
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .dashboard-block-links {background: #b94744;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-rx-denied-payment .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .daily-rx-void-payment .dashboard-block-content {background: #5db85b;color: #fff;border: 1px solid #5db85b;}
+.dashboard .dashboard-row-5 .daily-rx-void-payment .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-rx-void-payment .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-rx-void-payment .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-rx-void-payment .dashboard-block-links {background: #4b9749;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-rx-void-payment .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-rx-void-payment .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .daily-rx-error-payment .dashboard-block-content {background: #418bca;color: #fff;border: 1px solid #418bca;}
+.dashboard .dashboard-row-5 .daily-rx-error-payment .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-rx-error-payment .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-rx-error-payment .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-rx-error-payment .dashboard-block-links {background: #3675aa;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-rx-error-payment .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-rx-error-payment .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .daily-sales-amount .dashboard-block-content {background: #2a2a2a;color: #fff;border: 1px solid #2a2a2a;}
+.dashboard .dashboard-row-5 .daily-sales-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .daily-sales-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .daily-sales-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .daily-sales-amount .dashboard-block-links {background: #8ac541;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .daily-sales-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .daily-sales-amount .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-5 .monthly-sales-amount {margin-top:10px;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .dashboard-block-content {background: #2a2a2a;color: #fff;border: 1px solid #2a2a2a;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .dashboard-block-links {background: #8ac541;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-5 .monthly-sales-amount .dashboard-block-links a {color:#fff;}
+
+
+.dashboard .dashboard-row-11 .dashboard-block {float:left;width:32%;padding:5px 5px;}
+.dashboard .dashboard-row-11 .monthly-payments {float:left;width:36%;padding:5px 5px;}
+.dashboard .dashboard-row-11 .dashboard-block .dashboard-block-content {
+  border: 1px solid #ccc;
+  padding: 5px 5px;
+}
+
+.dashboard .dashboard-row-11 .rx-payment-comparison-table {width:100%;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table th {padding:5px 5px;border:1px solid #ccc;text-align:center;background: #8674a6;color: #fff;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table td {padding:5px 5px;border:1px solid #ccc;text-align:center;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody tr:nth-child(even) {background: #f6f6f6}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody tr:nth-child(odd) {}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.month-name {color: #f39b3a;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-successful {color: #00a300;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-successful a {color: #00a300;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-refund {color: #2d89ef;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-refund a {color: #2d89ef;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-invoice {color: #603cba;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-invoice a {color: #603cba;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-sales {color: #e54e52;font-weight: bold;}
+.dashboard .dashboard-row-11 .rx-payment-comparison-table tbody td.payment-sales a {color: #e54e52;font-weight: bold;}
+
+.dashboard .dashboard-row-6 {clear:both;}
+.dashboard .dashboard-row-6 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-6 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-6 .daily-order-submitted .dashboard-block-content {background: #00a300;color: #fff;border: 1px solid #00a300;}
+.dashboard .dashboard-row-6 .daily-order-submitted .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-6 .daily-order-submitted .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-6 .daily-order-submitted .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-6 .daily-order-submitted .dashboard-block-links {background: #009300;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-6 .daily-order-submitted .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-6 .daily-order-submitted .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-6 .rx-pending .dashboard-block-content {background: #2d89ef;color: #fff;border: 1px solid #2d89ef;}
+.dashboard .dashboard-row-6 .rx-pending .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-6 .rx-pending .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-6 .rx-pending .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-6 .rx-pending .dashboard-block-links {background: #297cd8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-6 .rx-pending .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-6 .rx-pending .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-6 .rx-scheduled .dashboard-block-content {background: #ffb910;color: #fff;border: 1px solid #ffb910;}
+.dashboard .dashboard-row-6 .rx-scheduled .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-6 .rx-scheduled .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-6 .rx-scheduled .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-6 .rx-scheduled .dashboard-block-links {background: #e6b10c;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-6 .rx-scheduled .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-6 .rx-scheduled .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-6 .rx-refills .dashboard-block-content {background: #603cba;color: #fff;border: 1px solid #603cba;}
+.dashboard .dashboard-row-6 .rx-refills .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-6 .rx-refills .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-6 .rx-refills .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-6 .rx-refills .dashboard-block-links {background: #5736a8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-6 .rx-refills .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-6 .rx-refills .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-7 .expiring-rx .dashboard-block-content {background: #603cba;color: #fff;border: 1px solid #603cba;}
+.dashboard .dashboard-row-7 .expiring-rx .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-7 .expiring-rx .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-7 .expiring-rx .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-7 .expiring-rx .dashboard-block-links {background: #5736a8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-7 .expiring-rx .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-7 .expiring-rx .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-7 .expiring-arb .dashboard-block-content {background: #ffb910;color: #fff;border: 1px solid #ffb910;}
+.dashboard .dashboard-row-7 .expiring-arb .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-7 .expiring-arb .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-7 .expiring-arb .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-7 .expiring-arb .dashboard-block-links {background: #e6b10c;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-7 .expiring-arb .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-7 .expiring-arb .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-7 .expiring-cc .dashboard-block-content {background: #2d89ef;color: #fff;border: 1px solid #2d89ef;}
+.dashboard .dashboard-row-7 .expiring-cc .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-7 .expiring-cc .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-7 .expiring-cc .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-7 .expiring-cc .dashboard-block-links {background: #297cd8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-7 .expiring-cc .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-7 .expiring-cc .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-7 .expiring-profile-cc .dashboard-block-content {background: #00a300;color: #fff;border: 1px solid #00a300;}
+.dashboard .dashboard-row-7 .expiring-profile-cc .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-7 .expiring-profile-cc .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-7 .expiring-profile-cc .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-7 .expiring-profile-cc .dashboard-block-links {background: #009300;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-7 .expiring-profile-cc .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-7 .expiring-profile-cc .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-7 {clear:both;}
+.dashboard .dashboard-row-7 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-7 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-8 {clear:both;}
+.dashboard .dashboard-row-8 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-8 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-8 .clinics-summary .dashboard-block-content {background: #f5685a;color: #fff;border: 1px solid #f5685a;}
+.dashboard .dashboard-row-8 .clinics-summary .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-8 .clinics-summary .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-8 .clinics-summary .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-8 .clinics-summary .dashboard-block-links {background: #de655a;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-8 .clinics-summary .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-8 .clinics-summary .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-8 .silent-post-summary .dashboard-block-content {background: #01c1ea;color: #fff;border: 1px solid #01c1ea;}
+.dashboard .dashboard-row-8 .silent-post-summary .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-8 .silent-post-summary .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-8 .silent-post-summary .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-8 .silent-post-summary .dashboard-block-links {background: #29b0d4;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-8 .silent-post-summary .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-8 .silent-post-summary .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-10 {clear:both;}
+.dashboard .dashboard-row-10 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-10 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-content {background: #f5685a;color: #fff;border: 1px solid #f5685a;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-links {background: #dd5e51;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-links a {color:#fff;}
+.dashboard .dashboard-row-10 .daily-total-po-amount .dashboard-block-amount {font-size:35px;}
+
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-content {background: #f39b3a;color: #fff;border: 1px solid #f39b3a;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-links {background: #db8c34;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-links a {color:#fff;}
+.dashboard .dashboard-row-10 .daily-total-po-refund-amount .dashboard-block-amount {font-size:35px;}
+
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-content {background: #00a663;color: #fff;border: 1px solid #00a663;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-links {background: #009659;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-links a {color:#fff;}
+.dashboard .dashboard-row-10 .weekly-total-po-amount .dashboard-block-amount {font-size:35px;}
+
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-content {background: #01c1ea;color: #fff;border: 1px solid #01c1ea;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-date {border-bottom: 1px solid #e0e0e0;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .fa-sort-desc {color: #f8d71d;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-links {background: #01aed3;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-links a {color:#fff;}
+.dashboard .dashboard-row-10 .monthly-total-po-amount .dashboard-block-amount {font-size:35px;}
+
+
+.dashboard .dashboard-row-12 {clear:both;}
+.dashboard .dashboard-row-12 .dashboard-block {float:left;width:25%;padding:5px 5px;}
+.dashboard .dashboard-row-12 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+.dashboard .dashboard-row-12 .daily_table_clinic_vs_staff_rx_created,
+.dashboard .dashboard-row-12 .monthly_table_clinic_vs_staff_rx_created,
+.dashboard .dashboard-row-12 .daily_table_clinic_vs_staff_rx_refill,
+.dashboard .dashboard-row-12 .monthly_table_clinic_vs_staff_rx_refill {width:100%;border:1px dotted 1#ccc;}
+
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .dashboard-block-content {background: #603cba;color: #fff;border: 1px solid #603cba;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .dashboard-block-date {border-bottom: 0px solid #e0e0e0;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .fa-sort-desc {color: #f8d71d;font-size: 15px;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .fa-sort-asc {font-size: 15px;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .dashboard-block-links {background: #5736a8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-created .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .dashboard-block-content {background: #00a300;color: #fff;border: 1px solid #00a300;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .dashboard-block-date {border-bottom: 0px solid #e0e0e0;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .fa-sort-desc {color: #f8d71d;font-size: 15px;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .fa-sort-asc {font-size: 15px;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .dashboard-block-links {background: #009300;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-created .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .dashboard-block-content {background: #2d89ef;color: #fff;border: 1px solid #2d89ef;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .dashboard-block-date {border-bottom: 0px solid #e0e0e0;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .fa-sort-desc {color: #f8d71d;font-size:15px;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .fa-sort-asc {font-size:15px;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .dashboard-block-links {background: #297cd8;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-12 .daily-clinic-vs-staff-rx-refill .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .dashboard-block-content {background: #f5685a;color: #fff;border: 1px solid #f5685a;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .dashboard-block-date {border-bottom: 0px solid #e0e0e0;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .fa-sort-desc {color: #f8d71d;font-size:15px;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .fa-sort-asc {font-size:15px;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .dashboard-block-separator {border:0;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .dashboard-block-links {background: #de655a;color: #fff;padding: 2px 10px;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .dashboard-block-links .last-update-block {color:#fff;}
+.dashboard .dashboard-row-12 .monthly-clinic-vs-staff-rx-refill .dashboard-block-links a {color:#fff;}
+
+.dashboard .dashboard-row-12 .table_clinic_vs_staff {width:100%;margin-top:2px;}
+.dashboard .dashboard-row-12 .table_clinic_vs_staff th {border:1px solid #fff;padding:2px 2px;}
+.dashboard .dashboard-row-12 .table_clinic_vs_staff th.header-top {text-align:center;text-transform:uppercase;width:50%;}
+.dashboard .dashboard-row-12 .table_clinic_vs_staff th.header-bottom {text-align:center;width:25%;}
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td {text-align:center;border:1px solid #fff;padding:2px 2px;width:25%;}
+
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .clinic-slit-created,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .clinic-scit-created,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .staff-slit-created,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .staff-scit-created,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .clinic-slit-refill,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .clinic-scit-refill,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .staff-slit-refill,
+.dashboard .dashboard-row-12 .table_clinic_vs_staff td .staff-scit-refill {font-size:20px;font-weight:bold;}
+
+.dashboard .dashboard-row-13 {clear:both;}
+.dashboard .dashboard-row-13 .dashboard-block {float:left;width:50%;padding:5px 5px;}
+.dashboard .dashboard-row-13 .dashboard-block .dashboard-block-content {border:1px solid #ccc;padding:5px 5px;}
+.dashboard .dashboard-row-13 .monthly-chart-clinic-vs-staff-rx {}
+.dashboard .dashboard-row-13 .monthly-compare-clinic-vs-staff-rx {}
+
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table {width:100%;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table caption {text-align:center;text-transform:uppercase;color:#C0463D;font-size:18px;font-weight:bold;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table th {padding:5px 5px;border:1px solid #ccc;text-align:center;background: #2e7aa2;color: #fff;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table td {padding:5px 5px;border:1px solid #ccc;text-align:center;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody tr:nth-child(even) {background: #f6f6f6}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody tr:nth-child(odd) {}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody td.month-name {color:#8674a6;font-weight:bold;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody td.created {color:#01c1ea;font-weight:bold;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody td.created a {color:#01c1ea;font-weight:bold;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody td.refill {color:#00a663;font-weight:bold;}
+.dashboard .dashboard-row-13 .clinic-vs-staff-rx-comparison-table tbody td.refill a {color:#00a663;font-weight:bold;}
+
+
+#dashboard_list_wrapper {max-height: 275px;overflow-y: auto;margin-bottom: 20px;}
+#dashboard_list_wrapper .rx-link-list, #dashboard_list_wrapper .order-link-list,
+#dashboard_list_wrapper .arb-link-list, #dashboard_list_wrapper .cc-link-list, #dashboard_list_wrapper .profile-cc-link-list {width:100%;}
+#dashboard_list_wrapper .rx-link-list th, #dashboard_list_wrapper .order-link-list th, #dashboard_list_wrapper .arb-link-list th,
+#dashboard_list_wrapper .cc-link-list th, #dashboard_list_wrapper .profile-cc-link-list th {background:#2b96cc;color:#fff;border:1px solid #ccc;padding:5px 5px;}
+#dashboard_list_wrapper .rx-link-list td, #dashboard_list_wrapper .order-link-list td, #dashboard_list_wrapper .arb-link-list td,
+#dashboard_list_wrapper .arb-link-list td, #dashboard_list_wrapper .cc-link-list td, #dashboard_list_wrapper .profile-cc-link-list td {border:1px dotted #ccc;padding:5px 5px;}
+
+#dashboard_list_wrapper .rx-link-list th.amount {text-align:center;white-space:nowrap;}
+#dashboard_list_wrapper .rx-link-list td.amount {text-align:center;white-space:nowrap;}
+#dashboard_list_wrapper .rx-link-list tr.summary {background:#2b96cc;color:#fff;}
+#dashboard_list_wrapper .rx-link-list tr.summary td.summary-label {font-weight:bold;text-align:right;}
+#dashboard_list_wrapper .rx-link-list tr.summary td.summary-value {text-align:center;font-weight:bold;}
+
+.dashboard-settings {}
+.dashboard-settings  .dashboard-settings-table {width:100%;}
+.dashboard-settings  .dashboard-settings-table th {}
+.dashboard-settings  .dashboard-settings-table td {border:1px dotted #ccc;padding:2px 5px;}
+.refresh-time-wrapper {color:#ccc;}  

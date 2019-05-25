@@ -1,0 +1,1011 @@
+<?php
+// $Id: dashboard.module,v 1.0 2019/05/23 12:55:37 shafiq Exp $
+
+
+/**
+ * @file
+ * Manage the dashboard
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function dashboard_permission() {
+  return array(
+    'view dashboard' => array(
+      'title' => t('View Dashboard'),
+    ),
+    'administer dashboard' => array(
+      'title' => t('Administer Dashboard'),
+    ),
+  );
+}
+
+
+/**
+ * Implementation of hook_page_build()
+ */
+function dashboard_page_build(&$page) {
+  if(arg(0) == 'dashboard') {
+    //add ctools library
+	ctools_include('ajax');
+	ctools_include('modal');
+    ctools_modal_add_js();
+
+	drupal_add_js(array(
+		'CToolsModal' => array(
+		  'modalSize' => array(
+			'type' => 'fixed',
+			'width' => 775,
+			'height' => 475,
+		  ),
+		  'closeText' => 'close',
+		  'closeImage' => '',
+		),
+	), 'setting');
+  }
+}
+
+
+/**
+ * Implements dashboard_get_monthname.
+ */
+function dashboard_get_monthname($monthno=0) {
+  $month_name = '';
+
+  if($monthno == 1) {
+    $month_name = 'Jan';
+  }
+  else if($monthno == 2) {
+    $month_name = 'Feb';
+  }
+  else if($monthno == 3) {
+    $month_name = 'Mar';
+  }
+  else if($monthno == 4) {
+    $month_name = 'Apr';
+  }
+  else if($monthno == 5) {
+    $month_name = 'May';
+  }
+  else if($monthno == 6) {
+    $month_name = 'Jun';
+  }
+  else if($monthno == 7) {
+    $month_name = 'Jul';
+  }
+  else if($monthno == 8) {
+    $month_name = 'Aug';
+  }
+  else if($monthno == 9) {
+    $month_name = 'Sep';
+  }
+  else if($monthno == 10) {
+    $month_name = 'Oct';
+  }
+  else if($monthno == 11) {
+    $month_name = 'Nov';
+  }
+  else if($monthno == 12) {
+    $month_name = 'Dec';
+  }
+  
+  return $month_name;
+}
+
+
+/**
+ * Implements hook_theme().
+ *
+ * Defines the theming capabilities provided by this module.
+ */
+function _theme() {
+  return array(
+	'dashboard_total_expiring_arb_view' => array(
+	  'render element' => 'form',
+	  'template' => 'dashboard_view_form',
+	),
+	'dashboard_total_order_submitted_view' => array(
+	  'render element' => 'form',
+	  'template' => 'dashboard_view_form',
+	),
+
+	'dashboard_update_all' => array(
+	  'render element' => 'form',
+	  'template' => 'dashboard_view_form',
+	),
+	'dashboard_clean_all' => array(
+	  'render element' => 'form',
+	  'template' => 'dashboard_view_form',
+	),
+	'dashboard_settings' => array(
+	  'render element' => 'form',
+	  'template' => 'dashboard_settings_form',
+	),
+
+	
+	//reports
+	'dashboard_report_daily_payments' => array(
+	  'render element' => 'form',
+	  'template' => 'dashboard_view_form',
+	),
+
+	'dashboard_view_page' => array(
+	  'template' => 'dashboard_view_page',
+	  'variables' => array(
+		  //id: daily-total-rx-amount
+		  'total_rx_amount_date' => NULL,
+		  'date_total_rx_amount' => NULL,
+		  'date_rx_amount_last_update' => NULL,
+		  'date_total_rx_amount_percent' => NULL,
+		  'date_total_rx_amount_marker' => NULL,
+
+		  //id: daily-total-order-amount
+		  'total_order_amount_date' => NULL,
+		  'date_total_order_amount' => NULL,
+		  'date_order_amount_last_update' => NULL,
+		  'date_total_order_amount_percent' => NULL,
+		  'date_total_order_amount_marker' => NULL,
+
+		  //id: weekly-total-amount
+		  'total_weekly_amount_week' => NULL,
+		  'weekly_total_rx_amount' => NULL,
+		  'weekly_total_order_amount' => NULL,
+		  'weekly_rx_amount_last_update' => NULL,
+		  'weekly_total_rx_amount_percent' => NULL,
+		  'weekly_total_rx_amount_marker' => NULL,
+		  'weekly_total_order_amount_percent' => NULL,
+		  'weekly_total_order_amount_marker' => NULL,
+
+		  //id: monthly-total-amount
+		  'total_monthly_amount_month' => NULL,
+		  'total_monthly_amount_year' => NULL,
+		  'monthly_total_rx_amount' => NULL,
+		  'monthly_total_order_amount' => NULL,
+		  'monthly_rx_amount_last_update' => NULL,
+		  'monthly_total_rx_amount_percent' => NULL,
+		  'monthly_total_rx_amount_marker' => NULL,
+		  'monthly_total_order_amount_percent' => NULL,
+		  'monthly_total_order_amount_marker' => NULL,
+
+		  //id: daily-total-po-amount
+		  'total_po_amount_date' => NULL,
+		  'daily_total_po_amount' => NULL,
+		  'daily_total_po_created' => NULL,
+		  'date_po_amount_last_update' => NULL,
+		  'daily_total_po_amount_percent' => NULL,
+		  'daily_total_po_amount_marker' => NULL,
+		  'daily_total_po_created_percent' => NULL,
+		  'daily_total_po_created_marker' => NULL,
+
+		  //id: daily-total-po-refund-amount
+		  'total_po_refund_amount_date' => NULL,
+		  'daily_total_po_refund_amount' => NULL,
+		  'daily_total_po_refund_created' => NULL,
+		  'date_po_refund_amount_last_update' => NULL,
+		  'daily_total_po_refund_amount_percent' => NULL,
+		  'daily_total_po_refund_amount_marker' => NULL,
+		  'daily_total_po_refund_created_percent' => NULL,
+		  'daily_total_po_refund_created_marker' => NULL,
+
+		  //id: weekly-total-po-amount
+		  'total_weekly_po_amount_week' => NULL,
+		  'weekly_total_po_amount' => NULL,
+		  'weekly_total_po_refund_amount' => NULL,
+		  'weekly_po_amount_last_update' => NULL,
+		  'weekly_total_po_amount_percent' => NULL,
+		  'weekly_total_po_amount_marker' => NULL,
+		  'weekly_total_po_refund_amount_percent' => NULL,
+		  'weekly_total_po_refund_amount_marker' => NULL,
+
+		  //id: monthly-total-po-amount
+		  'total_monthly_po_amount_month' => NULL,
+		  'total_monthly_po_amount_year' => NULL,
+		  'monthly_total_po_amount' => NULL,
+		  'monthly_total_po_refund_amount' => NULL,
+		  'monthly_po_amount_last_update' => NULL,
+		  'monthly_total_po_amount_percent' => NULL,
+		  'monthly_total_po_amount_marker' => NULL,
+		  'monthly_total_po_refund_amount_percent' => NULL,
+		  'monthly_total_po_refund_amount_marker' => NULL,
+
+		  //id: monthly-chart-rx-amount
+		  'total_monthly_rx_amount_year' => NULL,
+		  'chart_monthly_rx_amounts' => NULL,
+
+		  //id: monthly-chart-order-amount
+		  'total_monthly_order_amount_year' => NULL,
+		  'chart_monthly_order_amounts' => NULL,
+
+		  //id: monthly-chart-rx-and-order
+		  'chart_compare_monthly_amount_year' => NULL,
+	  	  'chart_compare_monthly_rx_label_prev' => NULL,
+		  'chart_compare_monthly_rx_amounts_prev' => NULL,
+		  'chart_compare_monthly_rx_label_current' => NULL,
+		  'chart_compare_monthly_rx_amounts_current' => NULL,
+		  'chart_compare_monthly_order_label_prev' => NULL,
+		  'chart_compare_monthly_order_amounts_prev' => NULL,
+		  'chart_compare_monthly_order_label_current' => NULL,
+		  'chart_compare_monthly_order_amounts_current' => NULL,
+		  'chart_compare_monthly_po_label_prev' => NULL,
+		  'chart_compare_monthly_po_amounts_prev' => NULL,
+		  'chart_compare_monthly_po_label_current' => NULL,
+		  'chart_compare_monthly_po_amounts_current' => NULL,
+
+		  //id: daily-rx-slit-created
+		  'total_slit_scit_created_date' => NULL,
+		  'date_total_slit_created' => NULL,
+		  'date_slit_scit_created_last_update' => NULL,
+		  'date_total_slit_created_percent' => NULL,
+		  'date_total_slit_created_marker' => NULL,
+
+		  //id: daily-rx-scit-created
+		  'total_slit_scit_created_date' => NULL,
+		  'date_total_scit_created' => NULL,
+		  'date_slit_scit_created_last_update' => NULL,
+		  'date_total_scit_created_percent' => NULL,
+		  'date_total_scit_created_marker' => NULL,
+
+		  //id: daily-rx-slit-refills
+		  'total_slit_refills_date' => NULL,
+		  'date_total_slit_refills' => NULL,
+		  'date_slit_scit_refills_last_update' => NULL,
+		  'date_total_slit_refills_percent' => NULL,
+		  'date_total_slit_refills_marker' => NULL,
+
+		  //id: daily-rx-scit-refills
+		  'total_scit_refills_date' => NULL,
+		  'date_total_scit_refills' => NULL,
+		  'date_slit_scit_refills_last_update' => NULL,
+		  'date_total_scit_refills_percent' => NULL,
+		  'date_total_scit_refills_marker' => NULL,
+
+		  //id: monthly-chart-slit-vs-scit-created
+		  'monthly_slit_vs_scit_created_year' => NULL,
+		  'chart_monthly_compare_slit_created' => NULL,
+		  'chart_monthly_compare_scit_created' => NULL,
+
+		  //id: monthly-chart-slit-vs-scit-refills
+		  'monthly_slit_vs_scit_refills_year' => NULL,
+		  'chart_monthly_compare_slit_refills_label_prev' => NULL,
+		  'chart_monthly_compare_slit_refills_label_current' => NULL,
+		  'chart_monthly_compare_scit_refills_label_prev' => NULL,
+		  'chart_monthly_compare_scit_refills_label_current' => NULL,
+		  'chart_monthly_compare_slit_refills_prev' => NULL,
+		  'chart_monthly_compare_slit_refills_current' => NULL,
+		  'chart_monthly_compare_scit_refills_prev' => NULL,
+		  'chart_monthly_compare_scit_refills_current' => NULL,
+
+
+		  //id: monthly-slit-vs-scit
+		  'rx_slit_vs_scit_last_update' => NULL,
+		  'comparison_table_slit_vs_scit' => NULL,
+
+		  //id: daily-rx-successful-payment
+		  'total_successful_payment_date' => NULL,
+		  'date_total_successful_payment' => NULL,
+		  'date_successful_payment_last_update' => NULL,
+		  'date_total_successful_payment_percent' => NULL,
+		  'date_total_successful_payment_marker' => NULL,
+
+		  //id: daily-rx-refund-payment
+		  'total_refund_payment_date' => NULL,
+		  'date_total_refund_payment' => NULL,
+		  'date_refund_payment_last_update' => NULL,
+		  'date_total_refund_payment_percent' => NULL,
+		  'date_total_refund_payment_marker' => NULL,
+
+		  //id: daily-rx-invoice-payment
+		  'total_invoice_payment_date' => NULL,
+		  'date_total_invoice_payment' => NULL,
+		  'date_invoice_payment_last_update' => NULL,
+		  'date_total_invoice_payment_percent' => NULL,
+		  'date_total_invoice_payment_marker' => NULL,
+
+		  //id: daily-rx-denied-payment
+		  'total_denied_payment_date' => NULL,
+		  'date_total_denied_payment' => NULL,
+		  'date_denied_payment_last_update' => NULL,
+		  'date_total_denied_payment_percent' => NULL,
+		  'date_total_denied_payment_marker' => NULL,
+
+		  //id: daily-rx-void-payment
+		  'total_void_payment_date' => NULL,
+		  'date_total_void_payment' => NULL,
+		  'date_void_payment_last_update' => NULL,
+		  'date_total_void_payment_percent' => NULL,
+		  'date_total_void_payment_marker' => NULL,
+
+		  //id: daily-rx-error-payment
+		  'total_error_payment_date' => NULL,
+		  'date_total_error_payment' => NULL,
+		  'date_error_payment_last_update' => NULL,
+		  'date_total_error_payment_percent' => NULL,
+		  'date_total_error_payment_marker' => NULL,
+
+		  //id: daily-rx-sales-amount
+		  'daily_sales_amount_date' => NULL,
+		  'daily_sales_amount' => NULL,
+		  'daily_sales_amount_last_update' => NULL,
+		  'daily_sales_amount_percent' => NULL,
+		  'daily_sales_amount_marker' => NULL,
+
+		  //id: monthly-sales-amount
+		  'monthly_sales_amount_month' => NULL,
+		  'monthly_sales_amount_year' => NULL,
+		  'monthly_sales_amount' => NULL,
+		  'monthly_sales_amount_last_update' => NULL,
+		  'monthly_sales_amount_percent' => NULL,
+		  'monthly_sales_amount_marker' => NULL,
+
+		  //id: daily-chart-sales-amount
+		  'total_daily_sales_amount_range' => NULL,
+		  'chart_daily_sales_amounts' => NULL,
+
+		  //id: monthly-chart-sales-amount
+		  'total_monthly_sales_amount_year' => NULL,
+		  'chart_monthly_sales_amounts' => NULL,
+
+		  //id: monthly-payments
+		  'rx_payments_last_update' => NULL,
+		  'rx_payments_comparison' => NULL,
+
+		  //id: daily-order-submitted
+		  'total_order_submitted_date' => NULL,
+		  'date_total_order_submitted' => NULL,
+		  'date_order_submitted_last_update' => NULL,
+		  'date_total_order_submitted_percent' => NULL,
+		  'date_total_order_submitted_marker' => NULL,
+
+		  //id: rx-pending
+		  'total_rx_pending_date' => NULL,
+		  'date_total_rx_pending' => NULL,
+		  'date_rx_pending_last_update' => NULL,
+		  'date_total_rx_pending_percent' => NULL,
+		  'date_total_rx_pending_marker' => NULL,
+
+		  //id: rx-scheduled
+		  'total_rx_scheduled_date' => NULL,
+		  'date_total_rx_scheduled' => NULL,
+		  'date_rx_scheduled_last_update' => NULL,
+		  'date_total_rx_scheduled_percent' => NULL,
+		  'date_total_rx_scheduled_marker' => NULL,
+
+		  //id: rx-refills
+		  'total_rx_refills_date' => NULL,
+		  'date_total_rx_refills' => NULL,
+		  'date_rx_refills_last_update' => NULL,
+		  'date_total_rx_refills_percent' => NULL,
+		  'date_total_rx_refills_marker' => NULL,
+
+		  //id: expiring-rx
+		  'total_expiring_rx_date' => NULL,
+		  'date_total_expiring_rx' => NULL,
+		  'date_expiring_rx_last_update' => NULL,
+		  'date_total_expiring_rx_percent' => NULL,
+		  'date_total_expiring_rx_marker' => NULL,
+
+		  //id: expiring-arb
+		  'total_expiring_arb_date' => NULL,
+		  'date_total_expiring_arb' => NULL,
+		  'date_expiring_arb_last_update' => NULL,
+		  'date_total_expiring_arb_percent' => NULL,
+		  'date_total_expiring_arb_marker' => NULL,
+
+		  //id: expiring-cc
+		  'total_expiring_cc_date' => NULL,
+		  'date_total_expiring_cc' => NULL,
+		  'date_expiring_cc_last_update' => NULL,
+		  'date_total_expiring_cc_percent' => NULL,
+		  'date_total_expiring_cc_marker' => NULL,
+
+		  //id: expiring-profile-cc
+		  'total_expiring_profile_cc_date' => NULL,
+		  'date_total_expiring_profile_cc' => NULL,
+		  'date_expiring_profile_cc_last_update' => NULL,
+		  'date_total_expiring_profile_cc_percent' => NULL,
+		  'date_total_expiring_profile_cc_marker' => NULL,
+
+		  //id: clinics-summary
+		  'total_clinics_date' => NULL,
+		  'date_total_clinics' => NULL,
+		  'date_total_clinics_last_update' => NULL,
+		  'date_total_clinics_percent' => NULL,
+		  'date_total_clinics_percent_marker' => NULL,
+
+		  //id: silent-post-summary
+		  'silent_post_summary_date' => NULL,
+		  'silent_post_resolved' => NULL,
+		  'silent_post_pending' => NULL,
+		  'silent_post_summary_last_update' => NULL,
+		  'silent_post_resolved_percent' => NULL,
+		  'silent_post_resolved_marker' => NULL,
+		  'silent_post_pending_percent' => NULL,
+		  'silent_post_pending_marker' => NULL,
+
+		  //id: daily-clinic-vs-staff-rx-created
+		  'clinic_vs_staff_rx_created_date' => NULL,
+		  'date_clinic_total_slit_created' => NULL,
+		  'date_clinic_total_scit_created' => NULL,
+		  'date_staff_total_slit_created' => NULL,
+		  'date_staff_total_scit_created' => NULL,
+		  'date_clinic_total_slit_created_percent' => NULL,
+		  'date_clinic_total_slit_created_marker' => NULL,
+		  'date_clinic_total_scit_created_percent' => NULL,
+		  'date_clinic_total_scit_created_marker' => NULL,
+		  'date_staff_total_slit_created_percent' => NULL,
+		  'date_staff_total_slit_created_marker' => NULL,
+		  'date_staff_total_scit_created_percent' => NULL,
+		  'date_staff_total_scit_created_marker' => NULL,
+		  'daily_clinic_vs_staff_rx_created_last_update' => NULL,
+
+		  //id: monthly-clinic-vs-staff-rx-created
+		  'clinic_vs_staff_rx_created_month' => NULL,
+		  'monthly_clinic_total_slit_created' => NULL,
+		  'monthly_clinic_total_scit_created' => NULL,
+		  'monthly_staff_total_slit_created' => NULL,
+		  'monthly_staff_total_scit_created' => NULL,
+		  'monthly_clinic_total_slit_created_percent' => NULL,
+		  'monthly_clinic_total_slit_created_marker' => NULL,
+		  'monthly_clinic_total_scit_created_percent' => NULL,
+		  'monthly_clinic_total_scit_created_marker' => NULL,
+		  'monthly_staff_total_slit_created_percent' => NULL,
+		  'monthly_staff_total_slit_created_marker' => NULL,
+		  'monthly_staff_total_scit_created_percent' => NULL,
+		  'monthly_staff_total_scit_created_marker' => NULL,
+		  'monthly_clinic_vs_staff_rx_created_last_update' => NULL,
+
+		  //id: daily-clinic-vs-staff-rx-refill
+		  'clinic_vs_staff_rx_refill_date' => NULL,
+		  'date_clinic_total_slit_refill' => NULL,
+		  'date_clinic_total_scit_refill' => NULL,
+		  'date_staff_total_slit_refill' => NULL,
+		  'date_staff_total_scit_refill' => NULL,
+		  'date_clinic_total_slit_refill_percent' => NULL,
+		  'date_clinic_total_slit_refill_marker' => NULL,
+		  'date_clinic_total_scit_refill_percent' => NULL,
+		  'date_clinic_total_scit_refill_marker' => NULL,
+		  'date_staff_total_slit_refill_percent' => NULL,
+		  'date_staff_total_slit_refill_marker' => NULL,
+		  'date_staff_total_scit_refill_percent' => NULL,
+		  'date_staff_total_scit_refill_marker' => NULL,
+		  'daily_clinic_vs_staff_rx_refill_last_update' => NULL,
+
+		  //id: monthly-clinic-vs-staff-rx-refill
+		  'clinic_vs_staff_rx_refill_month' => NULL,
+		  'monthly_clinic_total_slit_refill' => NULL,
+		  'monthly_clinic_total_scit_refill' => NULL,
+		  'monthly_staff_total_slit_refill' => NULL,
+		  'monthly_staff_total_scit_refill' => NULL,
+		  'monthly_clinic_total_slit_refill_percent' => NULL,
+		  'monthly_clinic_total_slit_refill_marker' => NULL,
+		  'monthly_clinic_total_scit_refill_percent' => NULL,
+		  'monthly_clinic_total_scit_refill_marker' => NULL,
+		  'monthly_staff_total_slit_refill_percent' => NULL,
+		  'monthly_staff_total_slit_refill_marker' => NULL,
+		  'monthly_staff_total_scit_refill_percent' => NULL,
+		  'monthly_staff_total_scit_refill_marker' => NULL,
+		  'monthly_clinic_vs_staff_rx_refill_last_update' => NULL,
+
+		  //id: monthly-chart-clinic-vs-staff-rx
+		  'monthly_clinic_vs_staff_rx_year' => NULL,
+		  'chart_monthly_compare_clinic_slit_created' => NULL,
+		  'chart_monthly_compare_clinic_scit_created' => NULL,
+		  'chart_monthly_compare_staff_slit_created' => NULL,
+		  'chart_monthly_compare_staff_scit_created' => NULL,
+		  'chart_monthly_compare_clinic_slit_refill' => NULL,
+		  'chart_monthly_compare_clinic_scit_refill' => NULL,
+		  'chart_monthly_compare_staff_slit_refill' => NULL,
+		  'chart_monthly_compare_staff_scit_refill' => NULL,
+
+		  //id: monthly-clinic-vs-staff-rx
+		  'comparison_table_clinic_vs_staff_rx' => NULL,
+		  'clinic_vs_staff_rx_last_update' => NULL,
+		  
+		  //refresh interval
+		  'dashboard_refresh_time' => NULL,
+		  'dashboard_last_refresh_time' => NULL,
+	  ),
+	),
+
+
+
+  );
+}
+
+
+/**
+ * Implementation of hook_menu().
+*/
+function dashboard_menu() {
+  $items['dashboard'] = array(
+    'title' => t('Dashboard'),
+    'description' => t('Dashboard'),
+    'page callback' => 'dashboard_view_page',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.page.inc',
+  );
+  $items['dashboard/cron'] = array(
+    'title' => t('Dashboard Cron'),
+    'description' => t('Dashboard Cron'),
+    'page callback' => 'dashboard_cron_page',
+    'access arguments' => array('administer dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.cron.inc',
+  );
+  $items['dashboard/run/generate'] = array(
+    'title' => t('Update All Data'),
+    'description' => t('Update All Data'),
+    'page callback' => 'dashboard_update_all_popup',
+    'access arguments' => array('administer dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.generate.inc',
+  );
+  $items['dashboard/run/clean'] = array(
+    'title' => t('Clean All Data'),
+    'description' => t('Clean All Data'),
+    'page callback' => 'dashboard_clean_all_popup',
+    'access arguments' => array('administer dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.delete.inc',
+  );
+  $items['dashboard/settings'] = array(
+    'title' => t('Settings'),
+    'description' => t('Settings'),
+    'page callback' => 'dashboard_settings_popup',
+    'access arguments' => array('administer dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.settings.inc',
+  );
+ 
+  //sections auto refresh
+  $items['dashboard/sections/refresh'] = array(
+    'title' => t('Sections: Refresh'),
+    'description' => t('Sections: Refresh'),
+    'page callback' => 'dashboard_sections_refresh',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.refresh.inc',
+  );
+  
+  //refresh links
+  $items['dashboard/total_rx_amount/refresh'] = array(
+    'title' => t('Refresh: Total Rx Amount'),
+    'description' => t('Refresh: Total Rx Amount'),
+    'page callback' => 'dashboard_total_rx_amount_refresh',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.amount.rx.inc',
+  );
+  $items['dashboard/total_order_amount/refresh'] = array(
+    'title' => t('Refresh: Total Order Amount'),
+    'description' => t('Refresh: Total Order Amount'),
+    'page callback' => 'dashboard_total_order_amount_refresh',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.amount.order.inc',
+  );
+  $items['dashboard/total_weekly_amount/refresh'] = array(
+    'title' => t('Refresh: Total Weekly Amount'),
+    'description' => t('Refresh: Total Weekly Amount'),
+    'page callback' => 'dashboard_total_weekly_amount_refresh',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.amount.weekly.inc',
+  );
+  $items['dashboard/total_monthly_amount/refresh'] = array(
+    'title' => t('Refresh: Total Monthly Amount'),
+    'description' => t('Refresh: Total Monthly Amount'),
+    'page callback' => 'dashboard_total_monthly_amount_refresh',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.amount.monthly.inc',
+  );
+
+  //display report in modal links
+  $items['dashboard/total_order_submitted/view'] = array(
+    'title' => t('View: Total Order Submitted'),
+    'description' => t('View: Total Order Submitted'),
+    'page callback' => 'dashboard_total_order_submitted_view_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.submitted.order.inc',
+  );
+  $items['dashboard/total_rx_pending/view'] = array(
+    'title' => t('View: Total Rx Pending'),
+    'description' => t('View: Total Rx Pending'),
+    'page callback' => 'dashboard_total_rx_pending_view_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.pending.rx.inc',
+  );
+  $items['dashboard/total_rx_scheduled/view'] = array(
+    'title' => t('View: Total Rx Scheduled'),
+    'description' => t('View: Total Rx Scheduled'),
+    'page callback' => 'dashboard_total_rx_scheduled_view_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.scheduled.rx.inc',
+  );
+
+  //reports
+  $items['dashboard/report/payments/daily'] = array(
+    'title' => t('Report: Daily Payments'),
+    'description' => t('Report: Daily Payments'),
+    'page callback' => 'dashboard_report_daily_payments_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.report.payments.inc',
+  );
+  $items['dashboard/report/payments/monthly'] = array(
+    'title' => t('Report: Monthly Payments'),
+    'description' => t('Report: Monthly Payments'),
+    'page callback' => 'dashboard_report_monthly_payments_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.report.payments.inc',
+  );
+  $items['dashboard/report/sales/daily'] = array(
+    'title' => t('Report: Daily Sales'),
+    'description' => t('Report: Daily Sales'),
+    'page callback' => 'dashboard_report_daily_sales_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.report.sales.inc',
+  );
+  $items['dashboard/report/sales/monthly'] = array(
+    'title' => t('Report: Monthly Sales'),
+    'description' => t('Report: Monthly Sales'),
+    'page callback' => 'dashboard_report_monthly_sales_popup',
+    'access arguments' => array('view dashboard'),
+    'type' => MENU_CALLBACK,
+    'file' => 'dashboard.report.sales.inc',
+  );
+
+  $items['dashboard/message'] = array(
+    'title' => t('Message'),
+    'page callback' => 'dashboard_message',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of dashboard_message().
+ *
+ * Rendering of the dashboard message.
+ */
+function dashboard_message() {
+  $output = "<div class='message'>".(isset($_SESSION['dashboard_message']) ? $_SESSION['dashboard_message'] : '')."</div>";
+  return $output;
+}
+
+
+/**
+ * Implementation of hook_cron()
+ */
+function dashboard_cron() {
+  include_once 'dashboard.cron.inc';
+
+  $interval = variable_get('dashboard_cron_interval', 2 * 60 * 60);  //2 hours
+  if (time() >= variable_get('dashboard_cron_next_execution', 0)) {
+	
+	//call the workers
+	dashboard_cron_page();
+
+    variable_set('dashboard_cron_next_execution', time() + $interval);
+    watchdog('dashboard', 'Cron run completed @ '.date('Y-m-d H:i:s'));
+  }
+
+}
+
+/**
+ * Compare the present and past and return the change status with marker
+ */
+function dashboard_change_status($present, $past) {
+  $change = '';
+  $change_marker = '';
+  if($present > $past && $past != 0) {  //increase
+	$increase = ($present - $past) / $past * 100;
+	$change = number_format($increase,0).'%';
+	$change_marker = '<i class="fa fa-sort-desc" aria-hidden="true">&nbsp;</i>';
+  }
+  else if($present < $past && $past != 0) {  //decrease
+	$decrease = ($past - $present) / $past * 100;
+	$change = number_format($decrease,0).'%';
+	$change_marker = '<i class="fa fa-sort-asc" aria-hidden="true">&nbsp;</i>';
+  }
+  else if($present > $past && $past == 0) {  //increase
+	$increase = 100;
+	$change = $increase.'%';
+	$change_marker = '<i class="fa fa-sort-desc" aria-hidden="true">&nbsp;</i>';
+  }
+  else if($present < $past && $present == 0) {  //decrease
+	$decrease = 100;
+	$change = $decrease.'%';
+	$change_marker = '<i class="fa fa-sort-asc" aria-hidden="true">&nbsp;</i>';
+  }
+  else if($present == $past && $present == 0 && $past == 0) {  //decrease
+	$decrease = 0;
+	$change = $decrease.'%';
+	$change_marker = '';
+  }
+  else if($present == $past && $present != 0 && $past != 0) {  //decrease
+	$decrease = 0;
+	$change = $decrease.'%';
+	$change_marker = '';
+  }
+  
+  $status = array();
+  $status['change'] = $change;
+  $status['marker'] = $change_marker;
+  
+  return $status;
+}
+
+function dashboard_cron_queue_info() {
+  //Billing workers
+  $queues['dashboard_total_amount_collected'] = array(
+    'worker callback' => 'dashboard_total_amount_collected_worker',
+    'time' => 60,  //max runtime per cron run
+  );
+  $queues['dashboard_total_rx_created'] = array(
+    'worker callback' => 'dashboard_total_rx_created_worker',
+    'time' => 30,
+  );
+  $queues['dashboard_total_rx_refills'] = array(
+    'worker callback' => 'dashboard_total_rx_refills_worker',
+    'time' => 30,
+  );
+  $queues['dashboard_total_rx_payments'] = array(
+    'worker callback' => 'dashboard_total_rx_payments_worker',
+    'time' => 60,
+  );
+
+  
+  //Order workers
+  $queues['dashboard_order_amount_collected'] = array(
+    'worker callback' => 'dashboard_order_amount_collected_worker',
+    'time' => 30,
+  );
+  $queues['dashboard_total_order_submitted'] = array(
+    'worker callback' => 'dashboard_total_order_submitted_worker',
+    'time' => 30,
+  );
+
+  //Sales workers
+  $queues['dashboard_total_sales_amount'] = array(
+    'worker callback' => 'dashboard_total_sales_amount_worker',
+    'time' => 30,
+  );
+
+  
+  return $queues;
+}
+
+
+
+/**
+  * Billing: Total amount collected today/week/month
+  */
+function dashboard_total_amount_collected_worker($item) {
+  watchdog('dashboard', 'dashboard_total_amount_collected_worker run completed @ '.date('Y-m-d H:i:s'));
+
+  //today
+  $sql  = "SELECT SUM(am.field_rx_amount_value) as total ";
+  $sql .= "FROM {node} n ";
+  $sql .= "INNER JOIN {field_data_field_workflow_status} ws ON ws.entity_id = n.nid AND ws.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_billing_info} fc ON fc.entity_id = n.nid and fc.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_tx_date} td ON td.entity_id = fc.field_billing_info_value and td.bundle = 'field_billing_info' ";
+  $sql .= "INNER JOIN {field_data_field_rx_amount} am ON am.entity_id = fc.field_billing_info_value and am.bundle = 'field_billing_info' ";
+  $sql .= "INNER JOIN {field_data_field_tx_status} ts ON ts.entity_id = fc.field_billing_info_value and ts.bundle = 'field_billing_info' ";
+  $sql .= "WHERE ts.field_tx_status_value IN ('Successful', 'Successful - Fee', 'Successful - PSCC', 'Paid') ";
+  $sql .= "AND DATE_FORMAT(td.field_tx_date_value, '%Y-%m-%d') = '".date("Y-m-d")."' ";
+  $sql .= "AND ws.field_workflow_status_value != 'Cancelled' ";
+  $sql .= "AND n.type = 'rx' ";
+  $sql .= "AND n.status = 1 ";
+  $total_today = db_query($sql)->fetchField();
+  if(empty($total_today)) $total_today = 0;
+
+
+  //update the table
+  $sql_insert = "INSERT INTO {dashboard_billing_by_date} (dashboard_date, total_collected_amount, collected_amount_last_update) VALUES (:dashboard_date,:total_collected_amount,:collected_amount_last_update) ";
+  $sql_insert .= "ON DUPLICATE KEY UPDATE total_collected_amount=VALUES(total_collected_amount), collected_amount_last_update='".date('Y-m-d H:i:s')."'";
+  $sql_values = array(
+    ':dashboard_date' => date('Y-m-d'),
+    ':total_collected_amount' => $total_today,
+    ':collected_amount_last_update' => date('Y-m-d H:i:s'),
+  );
+  db_query($sql_insert, $sql_values);
+
+
+  //this week
+  $sql  = "SELECT SUM(am.field_rx_amount_value) as total ";
+  $sql .= "FROM {node} n ";
+  $sql .= "INNER JOIN {field_data_field_workflow_status} ws ON ws.entity_id = n.nid AND ws.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_billing_info} fc ON fc.entity_id = n.nid and fc.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_tx_date} td ON td.entity_id = fc.field_billing_info_value and td.bundle = 'field_billing_info' ";
+  $sql .= "INNER JOIN {field_data_field_rx_amount} am ON am.entity_id = fc.field_billing_info_value and am.bundle = 'field_billing_info' ";
+  $sql .= "INNER JOIN {field_data_field_tx_status} ts ON ts.entity_id = fc.field_billing_info_value and ts.bundle = 'field_billing_info' ";
+  $sql .= "WHERE ts.field_tx_status_value IN ('Successful', 'Successful - Fee', 'Successful - PSCC', 'Paid') ";
+  $sql .= "AND YEAR(td.field_tx_date_value) = '".date('Y')."' ";
+  $sql .= "AND WEEKOFYEAR(td.field_tx_date_value) = '".date("W")."' ";
+  $sql .= "AND ws.field_workflow_status_value != 'Cancelled' ";
+  $sql .= "AND n.type = 'rx' ";
+  $sql .= "AND n.status = 1 ";
+  $total_week = db_query($sql)->fetchField();
+  if(empty($total_week)) $total_week = 0;
+
+  //update the table
+  $sql_insert = "INSERT INTO {dashboard_billing_by_week} (dashboard_year, dashboard_month, dashboard_week, total_collected_amount, collected_amount_last_update) VALUES (:dashboard_year, :dashboard_month, :dashboard_week, :total_collected_amount, :collected_amount_last_update) ";
+  $sql_insert .= "ON DUPLICATE KEY UPDATE total_collected_amount=VALUES(total_collected_amount), collected_amount_last_update='".date('Y-m-d H:i:s')."'";
+  $sql_values = array(
+    ':dashboard_year' => date('Y'),
+    ':dashboard_month' => date('n'),
+    ':dashboard_week' => date('W'),
+    ':total_collected_amount' => $total_week,
+    ':collected_amount_last_update' => date('Y-m-d H:i:s'),
+  );
+  db_query($sql_insert, $sql_values);
+  
+  //this month
+  $sql  = "SELECT SUM(am.field_rx_amount_value) as total ";
+  $sql .= "FROM {node} n ";
+  $sql .= "INNER JOIN {field_data_field_workflow_status} ws ON ws.entity_id = n.nid AND ws.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_billing_info} fc ON fc.entity_id = n.nid and fc.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_tx_date} td ON td.entity_id = fc.field_billing_info_value and td.bundle = 'field_billing_info' ";
+  $sql .= "INNER JOIN {field_data_field_rx_amount} am ON am.entity_id = fc.field_billing_info_value and am.bundle = 'field_billing_info' ";
+  $sql .= "INNER JOIN {field_data_field_tx_status} ts ON ts.entity_id = fc.field_billing_info_value and ts.bundle = 'field_billing_info' ";
+  $sql .= "WHERE ts.field_tx_status_value IN ('Successful', 'Successful - Fee', 'Successful - PSCC', 'Paid') ";
+  $sql .= "AND YEAR(td.field_tx_date_value) = '".date('Y')."' ";
+  $sql .= "AND MONTH(td.field_tx_date_value) = '".date('n')."' ";
+  $sql .= "AND ws.field_workflow_status_value != 'Cancelled' ";
+  $sql .= "AND n.type = 'rx' ";
+  $sql .= "AND n.status = 1 ";
+  $total_month = db_query($sql)->fetchField();
+  if(empty($total_month)) $total_month = 0;
+
+  //update the table
+  $sql_insert = "INSERT INTO {dashboard_billing_by_month} (dashboard_year, dashboard_month, total_collected_amount, collected_amount_last_update) VALUES (:dashboard_year, :dashboard_month, :total_collected_amount, :collected_amount_last_update) ";
+  $sql_insert .= "ON DUPLICATE KEY UPDATE total_collected_amount=VALUES(total_collected_amount), collected_amount_last_update='".date('Y-m-d H:i:s')."'";
+  $sql_values = array(
+    ':dashboard_year' => date('Y'),
+    ':dashboard_month' => date('n'),
+    ':total_collected_amount' => $total_month,
+    ':collected_amount_last_update' => date('Y-m-d H:i:s'),
+  );
+  db_query($sql_insert, $sql_values);
+}
+
+/**
+  * Billing: Total SLIT/SCIT created today/week/month
+  */
+function dashboard_total_rx_created_worker($item) {
+  watchdog('dashboard', 'dashboard_total_rx_created_worker run completed @ '.date('Y-m-d H:i:s'));
+
+  //today
+  $sql  = "SELECT bt.field_rx_base_type_value as 'base_type', COUNT(*) as total ";
+  $sql .= "FROM {node} n ";
+  $sql .= "INNER JOIN {field_data_field_workflow_status} ws ON ws.entity_id = n.nid AND ws.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_order_date} od ON od.entity_id = n.nid and od.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_rx_base_type} bt ON bt.entity_id = n.nid and bt.bundle = 'rx' ";
+  $sql .= "WHERE DATE_FORMAT(od.field_order_date_value, '%Y-%m-%d') = '".date("Y-m-d")."' ";
+  $sql .= "AND ws.field_workflow_status_value != 'Cancelled' ";
+  $sql .= "AND n.type = 'rx' ";
+  $sql .= "AND n.status = 1 ";
+  $sql .= "GROUP BY bt.field_rx_base_type_value ";
+  $results = db_query($sql)->fetchAll();
+
+  $total_scit_created = 0;
+  $total_slit_created = 0;
+  if(count($results)>0) {
+    foreach($results as $row) {
+      if($row->base_type == 'SCIT') {
+  	$total_scit_created = $row->total;
+      }
+      else {
+  	$total_slit_created = $row->total;
+      }
+    }
+  }
+  
+  //update the table
+  $sql_insert = "INSERT INTO {dashboard_billing_by_date} (dashboard_date, total_scit_created, total_slit_created, rx_create_last_update) VALUES (:dashboard_date, :total_scit_created, :total_slit_created, :rx_create_last_update) ";
+  $sql_insert .= "ON DUPLICATE KEY UPDATE total_scit_created=VALUES(total_scit_created), total_slit_created=VALUES(total_slit_created), rx_create_last_update='".date('Y-m-d H:i:s')."'";
+  $sql_values = array(
+    ':dashboard_date' => date('Y-m-d'),
+    ':total_scit_created' => $total_scit_created,
+    ':total_slit_created' => $total_slit_created,
+    ':rx_create_last_update' => date('Y-m-d H:i:s'),
+  );
+  db_query($sql_insert, $sql_values);
+
+
+  //this week
+  $sql  = "SELECT bt.field_rx_base_type_value as 'base_type', COUNT(*) as total ";
+  $sql .= "FROM {node} n ";
+  $sql .= "INNER JOIN {field_data_field_workflow_status} ws ON ws.entity_id = n.nid AND ws.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_order_date} od ON od.entity_id = n.nid and od.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_rx_base_type} bt ON bt.entity_id = n.nid and bt.bundle = 'rx' ";
+  $sql .= "WHERE YEAR(od.field_order_date_value) = '".date('Y')."' ";
+  $sql .= "AND WEEKOFYEAR(od.field_order_date_value) = '".date("W")."' ";
+  $sql .= "AND ws.field_workflow_status_value != 'Cancelled' ";
+  $sql .= "AND n.type = 'rx' ";
+  $sql .= "AND n.status = 1 ";
+  $sql .= "GROUP BY bt.field_rx_base_type_value ";
+  $results = db_query($sql)->fetchAll();
+
+  $total_scit_created = 0;
+  $total_slit_created = 0;
+  if(count($results)>0) {
+    foreach($results as $row) {
+      if($row->base_type == 'SCIT') {
+  		$total_scit_created = $row->total;
+      }
+      else {
+  		$total_slit_created = $row->total;
+      }
+    }
+  }
+  
+  //update the table
+  $sql_insert = "INSERT INTO {dashboard_billing_by_week} (dashboard_year, dashboard_month, dashboard_week, total_scit_created, total_slit_created, rx_create_last_update) VALUES (:dashboard_year, :dashboard_month, :dashboard_week, :total_scit_created, :total_slit_created, :rx_create_last_update) ";
+  $sql_insert .= "ON DUPLICATE KEY UPDATE total_scit_created=VALUES(total_scit_created), total_slit_created=VALUES(total_slit_created), rx_create_last_update='".date('Y-m-d H:i:s')."'";
+  $sql_values = array(
+    ':dashboard_year' => date('Y'),
+    ':dashboard_month' => date('n'),
+    ':dashboard_week' => date('W'),
+    ':total_scit_created' => $total_scit_created,
+    ':total_slit_created' => $total_slit_created,
+    ':rx_create_last_update' => date('Y-m-d H:i:s'),
+  );
+  db_query($sql_insert, $sql_values);
+
+
+  //this month
+  $sql  = "SELECT bt.field_rx_base_type_value as 'base_type', COUNT(*) as total ";
+  $sql .= "FROM {node} n ";
+  $sql .= "INNER JOIN {field_data_field_workflow_status} ws ON ws.entity_id = n.nid AND ws.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_order_date} od ON od.entity_id = n.nid and od.bundle = 'rx' ";
+  $sql .= "INNER JOIN {field_data_field_rx_base_type} bt ON bt.entity_id = n.nid and bt.bundle = 'rx' ";
+  $sql .= "WHERE YEAR(od.field_order_date_value) = '".date('Y')."' ";
+  $sql .= "AND MONTH(od.field_order_date_value) = '".date('n')."' ";
+  $sql .= "AND ws.field_workflow_status_value != 'Cancelled' ";
+  $sql .= "AND n.type = 'rx' ";
+  $sql .= "AND n.status = 1 ";
+  $sql .= "GROUP BY bt.field_rx_base_type_value ";
+  $results = db_query($sql)->fetchAll();
+
+  $total_scit_created = 0;
+  $total_slit_created = 0;
+  if(count($results)>0) {
+    foreach($results as $row) {
+      if($row->base_type == 'SCIT') {
+  		$total_scit_created = $row->total;
+      }
+      else {
+  		$total_slit_created = $row->total;
+      }
+    }
+  }
+  
+  //update the table
+  $sql_insert = "INSERT INTO {dashboard_billing_by_month} (dashboard_year, dashboard_month, total_scit_created, total_slit_created, rx_create_last_update) VALUES (:dashboard_year, :dashboard_month, :total_scit_created, :total_slit_created, :rx_create_last_update) ";
+  $sql_insert .= "ON DUPLICATE KEY UPDATE total_scit_created=VALUES(total_scit_created), total_slit_created=VALUES(total_slit_created), rx_create_last_update='".date('Y-m-d H:i:s')."'";
+  $sql_values = array(
+    ':dashboard_year' => date('Y'),
+    ':dashboard_month' => date('n'),
+    ':total_scit_created' => $total_scit_created,
+    ':total_slit_created' => $total_slit_created,
+    ':rx_create_last_update' => date('Y-m-d H:i:s'),
+  );
+  db_query($sql_insert, $sql_values);
+}
+
+
+
+?>
+

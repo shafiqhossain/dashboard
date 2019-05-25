@@ -1,0 +1,1369 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the dashboard module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function dashboard_schema() {
+  $schema['dashboard_billing_by_date'] = array(
+    'description' => 'Stores the dashboard data.',
+    'fields' => array(
+      'dashboard_date' => array(
+        'description' => 'Dashboard Date',
+		'type' => 'datetime',
+		'mysql_type' => 'date',
+        'not null' => TRUE,
+      ),
+      'total_collected_amount' => array(
+        'description' => 'Total collected amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10,
+        'scale' => 2,
+      ),
+      'collected_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_order_amount' => array(
+        'description' => 'Total order amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'order_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_po_amount' => array(
+        'description' => 'Total po amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_po_refund_amount' => array(
+        'description' => 'Total po refund amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'po_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_sales_amount' => array(
+        'description' => 'Total amount including rx, po, store except refund and declined',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_sales_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_po_created' => array(
+        'description' => 'Total PO Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_po_refund_created' => array(
+        'description' => 'Total PO Refund Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'po_create_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_scit_created' => array(
+        'description' => 'Total SCIT Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_slit_created' => array(
+        'description' => 'Total SLIT Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_create_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_scit_refill' => array(
+        'description' => 'Total SCIT Refill',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_slit_refill' => array(
+        'description' => 'Total SLIT Refill',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_refill_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_denied_payment' => array(
+        'description' => 'Total denied payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_successful_payment' => array(
+        'description' => 'Total successful payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_refund_payment' => array(
+        'description' => 'Total refund payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_void_payment' => array(
+        'description' => 'Total void payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_error_payment' => array(
+        'description' => 'Total error payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_invoice_payment' => array(
+        'description' => 'Total invoice payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'rx_payment_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('dashboard_date'),
+  );
+
+  $schema['dashboard_count_by_date'] = array(
+    'description' => 'Stores the dashboard data.',
+    'fields' => array(
+      'dashboard_date' => array(
+        'description' => 'Dashboard Date',
+		'type' => 'datetime',
+		'mysql_type' => 'date',
+        'not null' => TRUE,
+      ),
+      'order_submitted' => array(
+        'description' => 'Number of Order submitted',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'order_ids' => array(
+        'description' => 'Order ids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'order_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'rx_pending' => array(
+        'description' => 'RX with pending payment that is more than 3 days past the schedule date',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_pending_nids' => array(
+        'description' => 'Pending rx nids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'rx_pending_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'rx_scheduled' => array(
+        'description' => 'RX scheduled for shipment but has payment issues',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_scheduled_nids' => array(
+        'description' => 'Scheduled rx nids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'rx_scheduled_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'rx_refills' => array(
+        'description' => 'Upcoming RX for shipment refills',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_refills_nids' => array(
+        'description' => 'Refills rx nids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'rx_refills_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'rx_expiring' => array(
+        'description' => 'Expiring Rx',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_expiring_nids' => array(
+        'description' => 'Expiring rx nids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'rx_expiring_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'arb_expiring' => array(
+        'description' => 'Expiring ARB',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'arb_expiring_ids' => array(
+        'description' => 'Expiring subscription ids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'arb_expiring_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'cc_expiring' => array(
+        'description' => 'Expiring Credit Card',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'cc_expiring_ids' => array(
+        'description' => 'Expiring subscription ids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'cc_expiring_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'profile_cc_expiring' => array(
+        'description' => 'Payment Profile Expiring Credit Card',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'profile_cc_expiring_ids' => array(
+        'description' => 'Expiring profile ids',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'profile_cc_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_clinics' => array(
+        'description' => 'Total clinics',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_clinics_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'silent_post_resolved' => array(
+        'description' => 'Silent Post Resolved',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'silent_post_pending' => array(
+        'description' => 'Silent Post Pending',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'silent_post_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('dashboard_date'),
+  );
+
+  $schema['dashboard_billing_by_week'] = array(
+    'description' => 'Stores the dashboard data.',
+    'fields' => array(
+      'dashboard_year' => array(
+        'description' => 'Dashboard Year',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'dashboard_month' => array(
+        'description' => 'Dashboard Month',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'dashboard_week' => array(
+        'description' => 'Dashboard week',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'total_collected_amount' => array(
+        'description' => 'Total collected amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'collected_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_order_amount' => array(
+        'description' => 'Total order amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'order_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_po_amount' => array(
+        'description' => 'Total po amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_po_refund_amount' => array(
+        'description' => 'Total po refund amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'po_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_sales_amount' => array(
+        'description' => 'Total amount including rx, po, store except refund and declined',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_sales_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_po_created' => array(
+        'description' => 'Total PO Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_po_refund_created' => array(
+        'description' => 'Total PO Refund Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'po_create_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_scit_created' => array(
+        'description' => 'Total SCIT Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_slit_created' => array(
+        'description' => 'Total SLIT Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_create_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_scit_refill' => array(
+        'description' => 'Total SCIT Refill',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_slit_refill' => array(
+        'description' => 'Total SLIT Refill',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_refill_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_denied_payment' => array(
+        'description' => 'Total denied payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_successful_payment' => array(
+        'description' => 'Total successful payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_refund_payment' => array(
+        'description' => 'Total refund payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_void_payment' => array(
+        'description' => 'Total void payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_error_payment' => array(
+        'description' => 'Total error payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_invoice_payment' => array(
+        'description' => 'Total invoice payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'rx_payment_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('dashboard_year', 'dashboard_month', 'dashboard_week'),
+  );
+
+
+  $schema['dashboard_billing_by_month'] = array(
+    'description' => 'Stores the dashboard data.',
+    'fields' => array(
+      'dashboard_year' => array(
+        'description' => 'Dashboard Year',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'dashboard_month' => array(
+        'description' => 'Dashboard Month',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'total_collected_amount' => array(
+        'description' => 'Total collected amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'collected_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_order_amount' => array(
+        'description' => 'Total order amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'order_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_po_amount' => array(
+        'description' => 'Total po amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_po_refund_amount' => array(
+        'description' => 'Total po refund amount',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'po_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_sales_amount' => array(
+        'description' => 'Total amount including rx, po, store except refund and declined',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_sales_amount_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_po_created' => array(
+        'description' => 'Total PO Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_po_refund_created' => array(
+        'description' => 'Total PO Refund Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'po_create_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_scit_created' => array(
+        'description' => 'Total SCIT Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_slit_created' => array(
+        'description' => 'Total SLIT Created',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_create_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_scit_refill' => array(
+        'description' => 'Total SCIT Refill',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'total_slit_refill' => array(
+        'description' => 'Total SLIT Refill',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+      ),
+      'rx_refill_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+      'total_denied_payment' => array(
+        'description' => 'Total denied payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_successful_payment' => array(
+        'description' => 'Total successful payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_refund_payment' => array(
+        'description' => 'Total refund payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_void_payment' => array(
+        'description' => 'Total void payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_error_payment' => array(
+        'description' => 'Total error payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'total_invoice_payment' => array(
+        'description' => 'Total invoice payment',
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10, 
+        'scale' => 2,
+      ),
+      'rx_payment_last_update' => array(
+        'description' => 'last update',
+		'type' => 'datetime',
+		'mysql_type' => 'datetime',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('dashboard_year', 'dashboard_month'),
+  );
+
+  return $schema;
+}
+
+
+/**
+ * Adding two new fields: total_po_amount and po_amount_last_update
+ */
+function dashboard_update_7101() {
+  //dashboard_billing_by_date
+  if (!db_field_exists('dashboard_billing_by_date', 'total_po_amount')) {
+    db_add_field('dashboard_billing_by_date', 'total_po_amount', array(
+      'description' => 'Total po amount',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10, 
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'total_po_refund_amount')) {
+    db_add_field('dashboard_billing_by_date', 'total_po_refund_amount', array(
+      'description' => 'Total po refund amount',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10, 
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'po_amount_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'po_amount_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+  //dashboard_billing_by_week
+  if (!db_field_exists('dashboard_billing_by_week', 'total_po_amount')) {
+    db_add_field('dashboard_billing_by_week', 'total_po_amount', array(
+      'description' => 'Total po amount',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10, 
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'total_po_refund_amount')) {
+    db_add_field('dashboard_billing_by_week', 'total_po_refund_amount', array(
+      'description' => 'Total po refund amount',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10, 
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'po_amount_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'po_amount_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+  //dashboard_billing_by_month
+  if (!db_field_exists('dashboard_billing_by_month', 'total_po_amount')) {
+    db_add_field('dashboard_billing_by_month', 'total_po_amount', array(
+      'description' => 'Total po amount',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10, 
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'total_po_refund_amount')) {
+    db_add_field('dashboard_billing_by_month', 'total_po_refund_amount', array(
+      'description' => 'Total po refund amount',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10, 
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'po_amount_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'po_amount_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+}
+
+
+/**
+ * Adding two new fields: total_po_created and po_create_last_update
+ */
+function dashboard_update_7102() {
+  //dashboard_billing_by_date
+  if (!db_field_exists('dashboard_billing_by_date', 'total_po_created')) {
+    db_add_field('dashboard_billing_by_date', 'total_po_created', array(
+      'description' => 'Total PO Created',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'total_po_refund_created')) {
+    db_add_field('dashboard_billing_by_date', 'total_po_refund_created', array(
+      'description' => 'Total PO Refund Created',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'po_create_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'po_create_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+  //dashboard_billing_by_week
+  if (!db_field_exists('dashboard_billing_by_week', 'total_po_created')) {
+    db_add_field('dashboard_billing_by_week', 'total_po_created', array(
+      'description' => 'Total PO Created',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'total_po_refund_created')) {
+    db_add_field('dashboard_billing_by_week', 'total_po_refund_created', array(
+      'description' => 'Total PO Refund Created',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'po_create_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'po_create_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+  //dashboard_billing_by_month
+  if (!db_field_exists('dashboard_billing_by_month', 'total_po_created')) {
+    db_add_field('dashboard_billing_by_month', 'total_po_created', array(
+      'description' => 'Total PO Created',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'total_po_refund_created')) {
+    db_add_field('dashboard_billing_by_month', 'total_po_refund_created', array(
+      'description' => 'Total PO Refund Created',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'po_create_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'po_create_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+}
+
+
+/**
+ * Adding two new fields: total_sales_amount and total_sales_amount_last_update
+ */
+function dashboard_update_7103() {
+  //dashboard_billing_by_date
+  if (!db_field_exists('dashboard_billing_by_date', 'total_sales_amount')) {
+    db_add_field('dashboard_billing_by_date', 'total_sales_amount', array(
+      'description' => 'Total amount including rx, po, store except refund and declined',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10,
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'total_sales_amount_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'total_sales_amount_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+  //dashboard_billing_by_week
+  if (!db_field_exists('dashboard_billing_by_week', 'total_sales_amount')) {
+    db_add_field('dashboard_billing_by_week', 'total_sales_amount', array(
+      'description' => 'Total amount including rx, po, store except refund and declined',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10,
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'total_sales_amount_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'total_sales_amount_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+  //dashboard_billing_by_month
+  if (!db_field_exists('dashboard_billing_by_month', 'total_sales_amount')) {
+    db_add_field('dashboard_billing_by_month', 'total_sales_amount', array(
+      'description' => 'Total amount including rx, po, store except refund and declined',
+      'type' => 'numeric',
+      'size' => 'normal',
+      'not null' => FALSE,
+      'default' => 0,
+      'precision' => 10,
+      'scale' => 2,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'total_sales_amount_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'total_sales_amount_last_update', array(
+      'description' => 'last update',
+	  'type' => 'datetime',
+	  'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+}
+
+
+/**
+ * Adding twelve new fields:
+ * clinic_scit_created, clinic_slit_created, clinic_rx_create_last_update
+ * staff_scit_created, staff_slit_created, staff_rx_create_last_update
+ * clinic_scit_refill, clinic_slit_refill, clinic_rx_refill_last_update
+ * staff_scit_refill, staff_slit_refill, staff_rx_refill_last_update
+ */
+function dashboard_update_7104() {
+  //dashboard_billing_by_date
+  if (!db_field_exists('dashboard_billing_by_date', 'clinic_scit_created')) {
+    db_add_field('dashboard_billing_by_date', 'clinic_scit_created', array(
+      'description' => 'Total scit rx created by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'clinic_slit_created')) {
+    db_add_field('dashboard_billing_by_date', 'clinic_slit_created', array(
+      'description' => 'Total slit rx created by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'clinic_rx_create_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'clinic_rx_create_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_date', 'staff_scit_created')) {
+    db_add_field('dashboard_billing_by_date', 'staff_scit_created', array(
+      'description' => 'Total scit rx created by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'staff_slit_created')) {
+    db_add_field('dashboard_billing_by_date', 'staff_slit_created', array(
+      'description' => 'Total slit rx created by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'staff_rx_create_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'staff_rx_create_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_date', 'clinic_scit_refill')) {
+    db_add_field('dashboard_billing_by_date', 'clinic_scit_refill', array(
+      'description' => 'Total scit rx refills by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'clinic_slit_refill')) {
+    db_add_field('dashboard_billing_by_date', 'clinic_slit_refill', array(
+      'description' => 'Total slit rx refill by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'clinic_rx_refill_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'clinic_rx_refill_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+   
+  if (!db_field_exists('dashboard_billing_by_date', 'staff_scit_refill')) {
+    db_add_field('dashboard_billing_by_date', 'staff_scit_refill', array(
+      'description' => 'Total scit rx refills by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'staff_slit_refill')) {
+    db_add_field('dashboard_billing_by_date', 'staff_slit_refill', array(
+      'description' => 'Total slit rx refill by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_date', 'staff_rx_refill_last_update')) {
+    db_add_field('dashboard_billing_by_date', 'staff_rx_refill_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+  
+
+  //dashboard_billing_by_week
+  if (!db_field_exists('dashboard_billing_by_week', 'clinic_scit_created')) {
+    db_add_field('dashboard_billing_by_week', 'clinic_scit_created', array(
+      'description' => 'Total scit rx created by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'clinic_slit_created')) {
+    db_add_field('dashboard_billing_by_week', 'clinic_slit_created', array(
+      'description' => 'Total slit rx created by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'clinic_rx_create_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'clinic_rx_create_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_week', 'staff_scit_created')) {
+    db_add_field('dashboard_billing_by_week', 'staff_scit_created', array(
+      'description' => 'Total scit rx created by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'staff_slit_created')) {
+    db_add_field('dashboard_billing_by_week', 'staff_slit_created', array(
+      'description' => 'Total slit rx created by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'staff_rx_create_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'staff_rx_create_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_week', 'clinic_scit_refill')) {
+    db_add_field('dashboard_billing_by_week', 'clinic_scit_refill', array(
+      'description' => 'Total scit rx refills by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'clinic_slit_refill')) {
+    db_add_field('dashboard_billing_by_week', 'clinic_slit_refill', array(
+      'description' => 'Total slit rx refills by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'clinic_rx_refill_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'clinic_rx_refill_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_week', 'staff_scit_refill')) {
+    db_add_field('dashboard_billing_by_week', 'staff_scit_refill', array(
+      'description' => 'Total scit rx refills by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'staff_slit_refill')) {
+    db_add_field('dashboard_billing_by_week', 'staff_slit_refill', array(
+      'description' => 'Total slit rx refills by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_week', 'staff_rx_refill_last_update')) {
+    db_add_field('dashboard_billing_by_week', 'staff_rx_refill_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  
+  //dashboard_billing_by_month
+  if (!db_field_exists('dashboard_billing_by_month', 'clinic_scit_created')) {
+    db_add_field('dashboard_billing_by_month', 'clinic_scit_created', array(
+      'description' => 'Total scit rx created by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'clinic_slit_created')) {
+    db_add_field('dashboard_billing_by_month', 'clinic_slit_created', array(
+      'description' => 'Total slit rx created by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'clinic_rx_create_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'clinic_rx_create_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_month', 'staff_scit_created')) {
+    db_add_field('dashboard_billing_by_month', 'staff_scit_created', array(
+      'description' => 'Total scit rx created by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'staff_slit_created')) {
+    db_add_field('dashboard_billing_by_month', 'staff_slit_created', array(
+      'description' => 'Total slit rx created by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'staff_rx_create_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'staff_rx_create_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_month', 'clinic_scit_refill')) {
+    db_add_field('dashboard_billing_by_month', 'clinic_scit_refill', array(
+      'description' => 'Total scit rx refill by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'clinic_slit_refill')) {
+    db_add_field('dashboard_billing_by_month', 'clinic_slit_refill', array(
+      'description' => 'Total slit rx refill by clinic',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'clinic_rx_refill_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'clinic_rx_refill_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+
+  if (!db_field_exists('dashboard_billing_by_month', 'staff_scit_refill')) {
+    db_add_field('dashboard_billing_by_month', 'staff_scit_refill', array(
+      'description' => 'Total scit rx refill by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'staff_slit_refill')) {
+    db_add_field('dashboard_billing_by_month', 'staff_slit_refill', array(
+      'description' => 'Total slit rx refill by staff',
+      'type' => 'int',
+      'not null' => FALSE,
+      'default' => 0,
+    ));
+  }
+  if (!db_field_exists('dashboard_billing_by_month', 'staff_rx_refill_last_update')) {
+    db_add_field('dashboard_billing_by_month', 'staff_rx_refill_last_update', array(
+      'description' => 'last update',
+      'type' => 'datetime',
+      'mysql_type' => 'datetime',
+      'not null' => FALSE,
+    ));
+  }
+}
+

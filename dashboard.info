@@ -1,0 +1,14 @@
+; $Id: dashboard.info,v 1.0 2019/05/24 02:01:37  shafiq Exp $
+
+name = Dashboard
+description = Dashboard page summary
+package = Medela
+version = VERSION
+core = 7.x
+
+; Information added by Shafiq packaging script on 2019-05-01
+version = "7.x-1.0"
+core = "7.x"
+project = "iSoft Technologies"
+datestamp = "1309824553"
+
