@@ -1,0 +1,51 @@
+<div class="mrs-dashboard-settings">
+	<div class="content-row clearfix">
+		<table cellpadding="0" cellspacing="0" class="dashboard-settings-table">
+		<tr>
+		  <th colspan="3">Select Sections to Auto Refresh</th>
+		</tr>
+		<tr>
+		  <td>{{ form.mrdash_rx_order_amount }}</td>
+		  <td>{{ form.mrdash_po_amount }}</td>
+		  <td>{{ form.mrdash_sales_amount }}</td>
+		</tr>
+		<tr>
+		  <td>{{ form.mrdash_rx_payments }}</td>
+		  <td>{{ form.mrdash_order_submitted }}</td>
+		  <td>{{ form.mrdash_rx_pending }}</td>
+		</tr>
+		<tr>
+		  <td>{{ form.mrdash_rx_scheduled }}</td>
+		  <td>{{ form.mrdash_rx_upcoming_refills }}</td>
+		  <td>{{ form.mrdash_expiring_rx }}</td>
+		</tr>
+		<tr>
+		  <td>{{ form.mrdash_expiring_arb }}</td>
+		  <td>{{ form.mrdash_expiring_cc }}</td>
+		  <td>{{ form.mrdash_expiring_profile_cc }}</td>
+		</tr>
+		<tr>
+		  <td>{{ form.mrdash_total_clinics }}</td>
+		  <td>{{ form.mrdash_silentpost }}</td>
+		  <td>{{ form.mrdash_rx_created_refills }}</td>
+		</tr>
+		<tr>
+		  <td>{{ form.mrdash_clinic_vs_staff }}</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		</table>
+	</div>
+	<div class="content-row clearfix">
+		{{ form.mrsdash_refresh_interval }}
+	</div>
+
+	<div class="content-row actions clearfix">
+		{{ form.actions }}
+	</div>
+
+  {{ form.form_build_id }} {# required #}
+  {{ form.form_id }} {# required #}
+  {{ form.form_token }} {# required #}
+</div>
+

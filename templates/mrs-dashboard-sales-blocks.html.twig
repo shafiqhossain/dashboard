@@ -1,0 +1,222 @@
+<div class="mrs-dashboard-home-sales">
+	<div class="content-row dashboard-row-1 clearfix">
+		<div class="dashboard-block weekly-total-amount" id="weekly-total-amount">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">TOTAL WEEKLY AMOUNT</div>
+			<div class="dashboard-block-date">This Week | {{ total_weekly_amount_week|raw }}</div>
+			<div class="dashboard-block-amount-type">Rx | Store</div>
+			<div class="dashboard-block-amount"><span class="rx-amount">{{ weekly_total_rx_amount|raw }}</span> | <span class="order-amount">{{ weekly_total_order_amount|raw }}</span></div>
+			<div class="dashboard-block-amount-percent"><span class="rx-amount-percent">{{ weekly_total_rx_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="rx-amount-percent-marker">{{ weekly_total_rx_amount_marker|raw }}</span> | <span class="order-amount-percent">{{ weekly_total_order_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="order-amount-percent-marker">{{ weekly_total_order_amount_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ weekly_rx_amount_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="refresh-block"><a class="weekly-amount-refresh-link use-ajax" href="/custom_example/total_weekly_amount/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block monthly-total-amount" id="monthly-total-amount">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">TOTAL MONTHLY AMOUNT</div>
+			<div class="dashboard-block-date">This Month | {{ total_monthly_amount_month|raw }}, {{ total_monthly_amount_year|raw }}</div>
+			<div class="dashboard-block-amount-type">Rx | Store</div>
+			<div class="dashboard-block-amount"><span class="rx-amount">{{ monthly_total_rx_amount|raw }}</span> | <span class="order-amount">{{ monthly_total_order_amount|raw }}</span></div>
+			<div class="dashboard-block-amount-percent"><span class="rx-amount-percent">{{ monthly_total_rx_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="rx-amount-percent-marker">{{ monthly_total_rx_amount_marker|raw }}</span> | <span class="order-amount-percent">{{ monthly_total_order_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="order-amount-percent-marker">{{ monthly_total_order_amount_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ monthly_rx_amount_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="refresh-block"><a class="monthly-amount-refresh-link use-ajax" href="/custom_example/total_monthly_amount/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block weekly-total-po-amount" id="weekly-total-po-amount">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">WEEKLY PO AMOUNT</div>
+			<div class="dashboard-block-date">This Week | {{ total_weekly_po_amount_week|raw }}</div>
+			<div class="dashboard-block-amount-type">PO | Refund</div>
+			<div class="dashboard-block-amount"><span class="po-amount">{{ weekly_total_po_amount|raw }}</span> | <span class="po-refund-amount">{{ weekly_total_po_refund_amount|raw }}</span></div>
+			<div class="dashboard-block-amount-percent"><span class="po-amount-percent">{{ weekly_total_po_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="po-amount-percent-marker">{{ weekly_total_po_amount_marker|raw }}</span> | <span class="po-refund-amount-percent">{{ weekly_total_po_refund_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="po-refund-amount-percent-marker">{{ weekly_total_po_refund_amount_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ weekly_po_amount_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="refresh-block"><a class="weekly-po-amount-refresh-link use-ajax" href="/custom_example/total_weekly_po_amount/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block monthly-total-po-amount" id="monthly-total-po-amount">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">MONTHLY PO AMOUNT</div>
+			<div class="dashboard-block-date">This Month | {{ total_monthly_po_amount_month|raw }}, {{ total_monthly_po_amount_year|raw }}</div>
+			<div class="dashboard-block-amount-type">PO | Refund</div>
+			<div class="dashboard-block-amount"><span class="po-amount">{{ monthly_total_po_amount|raw }}</span> | <span class="po-refund-amount">{{ monthly_total_po_refund_amount|raw }}</span></div>
+			<div class="dashboard-block-amount-percent"><span class="po-amount-percent">{{ monthly_total_po_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="po-amount-percent-marker">{{ monthly_total_po_amount_marker|raw }}</span> | <span class="po-refund-amount-percent">{{ monthly_total_po_refund_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="po-refund-amount-percent-marker">{{ monthly_total_po_refund_amount_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ monthly_po_amount_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="refresh-block"><a class="monthly-po-amount-refresh-link use-ajax" href="/custom_example/total_monthly_po_amount/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+
+
+	<div class="content-row dashboard-row-2 clearfix">
+		<div class="content-row-left">
+			<div class="content-row dashboard-row-left-1 clearfix">
+				<div class="dashboard-block daily-rx-successful-payment" id="daily-rx-successful-payment">
+		  		  <div class="dashboard-block-content">
+					<div class="dashboard-block-title">TOTAL SUCCESSFUL PAYMENT</div>
+					<div class="dashboard-block-date">Today | {{ total_successful_payment_date }}</div>
+					<div class="dashboard-block-amount">{{ date_total_successful_payment }}</div>
+					<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_successful_payment_percent }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_successful_payment_marker }}</span></div>
+					<div class="dashboard-block-separator"></div>
+					<div class="dashboard-block-links">
+						<span class="last-update-block">{{ date_successful_payment_last_update }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span class="display-block"><a class="payment-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/payments/daily/successful"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+						<span class="refresh-block"><a class="rx-successful-payment-refresh-link use-ajax" href="/custom_example/total_payments/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+					</div>
+				  </div>
+				</div>
+
+				<div class="dashboard-block daily-rx-refund-payment" id="daily-rx-refund-payment">
+		  		  <div class="dashboard-block-content">
+					<div class="dashboard-block-title">TOTAL REFUND PAYMENT</div>
+					<div class="dashboard-block-date">Today | {{ total_refund_payment_date|raw }}</div>
+					<div class="dashboard-block-amount">{{ date_total_refund_payment|raw }}</div>
+					<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_refund_payment_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_refund_payment_marker|raw }}</span></div>
+					<div class="dashboard-block-separator"></div>
+					<div class="dashboard-block-links">
+						<span class="last-update-block">{{ date_refund_payment_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span class="display-block"><a class="payment-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/payments/daily/refund"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+						<span class="refresh-block"><a class="rx-refund-payment-refresh-link use-ajax" href="/custom_example/total_payments/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+					</div>
+				  </div>
+				</div>
+
+				<div class="dashboard-block daily-rx-invoice-payment" id="daily-rx-invoice-payment">
+		  		  <div class="dashboard-block-content">
+					<div class="dashboard-block-title">TOTAL INVOICE PAYMENT</div>
+					<div class="dashboard-block-date">Today | {{ total_invoice_payment_date|raw }}</div>
+					<div class="dashboard-block-amount">{{ date_total_invoice_payment|raw }}</div>
+					<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_invoice_payment_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_invoice_payment_marker|raw }}</span></div>
+					<div class="dashboard-block-separator"></div>
+					<div class="dashboard-block-links">
+						<span class="last-update-block">{{ date_invoice_payment_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span class="display-block"><a class="payment-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/payments/daily/invoice"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+						<span class="refresh-block"><a class="rx-invoice-payment-refresh-link use-ajax" href="/custom_example/total_payments/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+					</div>
+				  </div>
+				</div>
+			</div>
+
+			<div class="content-row dashboard-row-left-2 clearfix">
+				<div class="dashboard-block daily-rx-denied-payment" id="daily-rx-denied-payment">
+		  		  <div class="dashboard-block-content">
+					<div class="dashboard-block-title">TOTAL DENIED PAYMENT</div>
+					<div class="dashboard-block-date">Today | {{ total_denied_payment_date|raw }}</div>
+					<div class="dashboard-block-amount">{{ date_total_denied_payment|raw }}</div>
+					<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_denied_payment_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_denied_payment_marker|raw }}</span></div>
+					<div class="dashboard-block-separator"></div>
+					<div class="dashboard-block-links">
+						<span class="last-update-block">{{ date_denied_payment_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span class="display-block"><a class="payment-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/payments/daily/denied"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+						<span class="refresh-block"><a class="rx-denied-payment-refresh-link use-ajax" href="/custom_example/total_payments/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+					</div>
+				  </div>
+				</div>
+
+				<div class="dashboard-block daily-rx-void-payment" id="daily-rx-void-payment">
+		  		  <div class="dashboard-block-content">
+					<div class="dashboard-block-title">TOTAL VOID PAYMENT</div>
+					<div class="dashboard-block-date">Today | {{ total_void_payment_date|raw }}</div>
+					<div class="dashboard-block-amount">{{ date_total_void_payment|raw }}</div>
+					<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_void_payment_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_void_payment_marker|raw }}</span></div>
+					<div class="dashboard-block-separator"></div>
+					<div class="dashboard-block-links">
+						<span class="last-update-block">{{ date_void_payment_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span class="display-block"><a class="payment-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/payments/daily/void"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+						<span class="refresh-block"><a class="rx-void-payment-refresh-link use-ajax" href="/custom_example/total_payments/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+					</div>
+				  </div>
+				</div>
+
+				<div class="dashboard-block daily-rx-error-payment" id="daily-rx-error-payment">
+		  		  <div class="dashboard-block-content">
+					<div class="dashboard-block-title">TOTAL ERROR PAYMENT</div>
+					<div class="dashboard-block-date">Today | {{ total_error_payment_date|raw }}</div>
+					<div class="dashboard-block-amount">{{ date_total_error_payment|raw }}</div>
+					<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_error_payment_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_error_payment_marker|raw }}</span></div>
+					<div class="dashboard-block-separator"></div>
+					<div class="dashboard-block-links">
+						<span class="last-update-block">{{ date_error_payment_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+						<span class="display-block"><a class="payment-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/payments/daily/error"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+						<span class="refresh-block"><a class="rx-error-payment-refresh-link use-ajax" href="/custom_example/total_payments/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content-row-right">
+			<div class="dashboard-block daily-sales-amount" id="daily-sales-amount">
+			  <div class="dashboard-block-content">
+				<div class="dashboard-block-title">DAILY SALES AMOUNT</div>
+				<div class="dashboard-block-date">Today | {{ daily_sales_amount_date|raw }}</div>
+				<div class="dashboard-block-amount">{{ daily_sales_amount|raw }}</div>
+				<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ daily_sales_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ daily_sales_amount_marker }}</span></div>
+				<div class="dashboard-block-separator"></div>
+				<div class="dashboard-block-links">
+					<span class="last-update-block">{{ daily_sales_amount_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<span class="report-block"><a class="sales-amount-report-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/sales/daily"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+					<span class="refresh-block"><a class="rx-error-payment-refresh-link use-ajax" href="/custom_example/daily_sales_amount/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+				</div>
+			  </div>
+			</div>
+
+			<div class="dashboard-block monthly-sales-amount" id="monthly-sales-amount">
+			  <div class="dashboard-block-content">
+				<div class="dashboard-block-title">MONTHLY SALES AMOUNT</div>
+				<div class="dashboard-block-date">This Month | {{ monthly_sales_amount_month|raw }}, {{ monthly_sales_amount_year|raw }}</div>
+				<div class="dashboard-block-amount">{{ monthly_sales_amount|raw }}</div>
+				<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ monthly_sales_amount_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ monthly_sales_amount_marker|raw }}</span></div>
+				<div class="dashboard-block-separator"></div>
+				<div class="dashboard-block-links">
+					<span class="last-update-block">{{ monthly_sales_amount_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<span class="report-block"><a class="sales-amount-report-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/sales/monthly/{{ "now"|date('n') }}/{{ "now"|date('Y') }}"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+					<span class="refresh-block"><a class="monthly-amount-refresh-link use-ajax" href="/custom_example/monthly_sales_amount/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+				</div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="content-row dashboard-row-3 clearfix">
+		<div class="dashboard-block monthly-chart-rx-and-order" id="monthly-chart-rx-and-order">
+		  <div class="dashboard-block-content">
+			  {{ attach_library('custom_example/monthly-rx-order-amount-container') }}
+			  <div id="monthly-rx-order-amount-container"></div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block monthly-payments" id="monthly-payments">
+		  <div class="dashboard-block-content">
+			<div class="payment-comparison" id="monthly-table-payments">
+			  {{ rx_payments_comparison|raw }}
+			</div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+			  <span class="last-update-block">{{ rx_payments_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+			  <span class="refresh-block"><a class="rx-payments-link use-ajax" href="/custom_example/rx_payments_summary/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+
+</div>
+

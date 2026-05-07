@@ -1,0 +1,1879 @@
+.mrs-dashboard {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .dashboard-block-separator {
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 2px;
+  }
+
+  .dashboard-block-links {
+    .last-update-block {
+      color: #888;
+      font-size: 9px;
+      font-style: italic;
+    }
+  }
+
+  .dashboard-block {
+    .dashboard-block-title {
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .dashboard-block-date {
+      font-size: 14px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .dashboard-block-amount {
+      font-size: 50px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .dashboard-block-amount-type {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .dashboard-block-label {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .dashboard-block-amount-percent {
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .fa-sort-asc {
+      font-size: 30px;
+      color: #c13e11;
+      vertical-align: text-bottom;
+    }
+
+    .fa-sort-desc {
+      font-size: 30px;
+      color: #88c136;
+      vertical-align: text-top;
+    }
+  }
+
+  .dashboard-row-1 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .daily-total-rx-amount {
+      .dashboard-block-content {
+        background: #01c1ea;
+        color: #fff;
+        border: 1px solid #01c1ea;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #01aed3;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-total-order-amount {
+      .dashboard-block-content {
+        background: #00a663;
+        color: #fff;
+        border: 1px solid #00a663;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #009659;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .weekly-total-amount {
+      .dashboard-block-content {
+        background: #f39b3a;
+        color: #fff;
+        border: 1px solid #f39b3a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #db8c34;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+
+      .dashboard-block-amount {
+        font-size: 28px;
+      }
+    }
+
+    .monthly-total-amount {
+      .dashboard-block-content {
+        background: #f5685a;
+        color: #fff;
+        border: 1px solid #f5685a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #dd5e51;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+
+      .dashboard-block-amount {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .dashboard-row-2 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 33%;
+      padding: 5px 4px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .monthly-chart-rx-and-order {
+      width: 34%;
+    }
+  }
+
+  .dashboard-row-3 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .daily-rx-slit-created {
+      .dashboard-block-content {
+        background: #603cba;
+        color: #fff;
+        border: 1px solid #603cba;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #5736a8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-scit-created {
+      .dashboard-block-content {
+        background: #00a300;
+        color: #fff;
+        border: 1px solid #00a300;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #009300;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-slit-refills {
+      .dashboard-block-content {
+        background: #2d89ef;
+        color: #fff;
+        border: 1px solid #2d89ef;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #297cd8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-scit-refills {
+      .dashboard-block-content {
+        background: #ffb910;
+        color: #fff;
+        border: 1px solid #ffb910;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #e6b10c;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .dashboard-row-4 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 33%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .monthly-slit-vs-scit {
+      width: 34%;
+    }
+
+    .slit-vs-scit-comparison-table {
+      width: 100%;
+
+      th {
+        padding: 5px 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+        background: #2e7aa2;
+        color: #fff;
+      }
+
+      td {
+        padding: 5px 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background: #f6f6f6;
+          }
+        }
+
+        td.month-name {
+          color: #8674a6;
+          font-weight: bold;
+        }
+
+        td.created {
+          color: #01c1ea;
+          font-weight: bold;
+
+          a {
+            color: #01c1ea;
+            font-weight: bold;
+          }
+        }
+
+        td.refill {
+          color: #00a663;
+          font-weight: bold;
+
+          a {
+            color: #00a663;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .dashboard-row-5 {
+    clear: both;
+
+    .content-row-left {
+      float: left;
+      width: 75%;
+
+      .dashboard-row-left-1 {
+        .dashboard-block {
+          float: left;
+          width: 33%;
+          padding: 5px 5px;
+        }
+      }
+
+      .dashboard-row-left-2 {
+        .dashboard-block {
+          float: left;
+          width: 33%;
+          padding: 5px 5px;
+        }
+      }
+    }
+
+    .content-row-right {
+      float: left;
+      width: 25%;
+      background: #e54e52;
+      padding: 5px;
+
+      .dashboard-block {
+        float: none;
+        display: block;
+        padding: 5px 5px;
+      }
+    }
+
+    .dashboard-block {
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .daily-rx-successful-payment {
+      .dashboard-block-content {
+        background: #418bca;
+        color: #fff;
+        border: 1px solid #418bca;
+      }
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #3675aa;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-refund-payment {
+      .dashboard-block-content {
+        background: #5db85b;
+        color: #fff;
+        border: 1px solid #5db85b;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #4b9749;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-invoice-payment {
+      .dashboard-block-content {
+        background: #efad4d;
+        color: #fff;
+        border: 1px solid #efad4d;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #cf9542;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-denied-payment {
+      .dashboard-block-content {
+        background: #d95350;
+        color: #fff;
+        border: 1px solid #d95350;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #b94744;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-void-payment {
+      .dashboard-block-content {
+        background: #5db85b;
+        color: #fff;
+        border: 1px solid #5db85b;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #4b9749;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-rx-error-payment {
+      .dashboard-block-content {
+        background: #418bca;
+        color: #fff;
+        border: 1px solid #418bca;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #3675aa;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-sales-amount {
+      .dashboard-block-content {
+        background: #2a2a2a;
+        color: #fff;
+        border: 1px solid #2a2a2a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #8ac541;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .monthly-sales-amount {
+      margin-top: 10px;
+
+      .dashboard-block-content {
+        background: #2a2a2a;
+        color: #fff;
+        border: 1px solid #2a2a2a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #8ac541;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .dashboard-row-11 {
+    .dashboard-block {
+      float: left;
+      width: 32%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .monthly-payments {
+      float: left;
+      width: 36%;
+      padding: 5px 5px;
+    }
+
+    .rx-payment-comparison-table {
+      width: 100%;
+
+      th {
+        padding: 5px 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+        background: #8674a6;
+        color: #fff;
+      }
+
+      td {
+        padding: 5px 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background: #f6f6f6;
+          }
+        }
+
+        td.month-name {
+          color: #f39b3a;
+          font-weight: bold;
+        }
+
+        td.payment-successful {
+          color: #00a300;
+          font-weight: bold;
+
+          a {
+            color: #00a300;
+            font-weight: bold;
+          }
+        }
+
+        td.payment-refund {
+          color: #2d89ef;
+          font-weight: bold;
+
+          a {
+            color: #2d89ef;
+            font-weight: bold;
+          }
+        }
+
+        td.payment-invoice {
+          color: #603cba;
+          font-weight: bold;
+
+          a {
+            color: #603cba;
+            font-weight: bold;
+          }
+        }
+
+        td.payment-sales {
+          color: #e54e52;
+          font-weight: bold;
+
+          a {
+            color: #e54e52;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .dashboard-row-6 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .daily-order-submitted {
+      .dashboard-block-content {
+        background: #00a300;
+        color: #fff;
+        border: 1px solid #00a300;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #009300;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .rx-pending {
+      .dashboard-block-content {
+        background: #2d89ef;
+        color: #fff;
+        border: 1px solid #2d89ef;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #297cd8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .rx-scheduled {
+      .dashboard-block-content {
+        background: #ffb910;
+        color: #fff;
+        border: 1px solid #ffb910;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #e6b10c;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .rx-refills {
+      .dashboard-block-content {
+        background: #603cba;
+        color: #fff;
+        border: 1px solid #603cba;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #5736a8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .dashboard-row-7 {
+    .expiring-rx {
+      .dashboard-block-content {
+        background: #603cba;
+        color: #fff;
+        border: 1px solid #603cba;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #5736a8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .expiring-arb {
+      .dashboard-block-content {
+        background: #ffb910;
+        color: #fff;
+        border: 1px solid #ffb910;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #e6b10c;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .expiring-cc {
+      .dashboard-block-content {
+        background: #2d89ef;
+        color: #fff;
+        border: 1px solid #2d89ef;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #297cd8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .expiring-profile-cc {
+      .dashboard-block-content {
+        background: #00a300;
+        color: #fff;
+        border: 1px solid #00a300;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #009300;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+        a {
+          color: #fff;
+        }
+      }
+    }
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+  }
+
+  .dashboard-row-8 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .clinics-summary {
+      .dashboard-block-content {
+        background: #f5685a;
+        color: #fff;
+        border: 1px solid #f5685a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #de655a;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .silent-post-summary {
+      .dashboard-block-content {
+        background: #01c1ea;
+        color: #fff;
+        border: 1px solid #01c1ea;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #29b0d4;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .dashboard-row-10 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .daily-total-po-amount {
+      .dashboard-block-content {
+        background: #f5685a;
+        color: #fff;
+        border: 1px solid #f5685a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #dd5e51;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+
+      .dashboard-block-amount {
+        font-size: 35px;
+      }
+    }
+
+    .daily-total-po-refund-amount {
+      .dashboard-block-content {
+        background: #f39b3a;
+        color: #fff;
+        border: 1px solid #f39b3a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #db8c34;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+
+      .dashboard-block-amount {
+        font-size: 35px;
+      }
+    }
+
+    .weekly-total-po-amount {
+      .dashboard-block-content {
+        background: #00a663;
+        color: #fff;
+        border: 1px solid #00a663;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #009659;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+
+      .dashboard-block-amount {
+        font-size: 35px;
+      }
+    }
+
+    .monthly-total-po-amount {
+      .dashboard-block-content {
+        background: #01c1ea;
+        color: #fff;
+        border: 1px solid #01c1ea;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #01aed3;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+
+      .dashboard-block-amount {
+        font-size: 35px;
+      }
+    }
+  }
+
+  .dashboard-row-12 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 25%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .daily_table_clinic_vs_staff_rx_created {
+      width: 100%;
+      border: 1px dotted #ccc;
+    }
+
+    .monthly_table_clinic_vs_staff_rx_created {
+      width: 100%;
+      border: 1px dotted #ccc;
+    }
+
+    .daily_table_clinic_vs_staff_rx_refill {
+      width: 100%;
+      border: 1px dotted #ccc;
+    }
+
+    .monthly_table_clinic_vs_staff_rx_refill {
+      width: 100%;
+      border: 1px dotted #ccc;
+    }
+
+    .daily-clinic-vs-staff-rx-created {
+      .dashboard-block-content {
+        background: #603cba;
+        color: #fff;
+        border: 1px solid #603cba;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 0 solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+        font-size: 15px;
+      }
+
+      .fa-sort-asc {
+        font-size: 15px;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #5736a8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .monthly-clinic-vs-staff-rx-created {
+      .dashboard-block-content {
+        background: #00a300;
+        color: #fff;
+        border: 1px solid #00a300;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 0 solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+        font-size: 15px;
+      }
+
+      .fa-sort-asc {
+        font-size: 15px;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #009300;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .daily-clinic-vs-staff-rx-refill {
+      .dashboard-block-content {
+        background: #2d89ef;
+        color: #fff;
+        border: 1px solid #2d89ef;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 0 solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+        font-size: 15px;
+      }
+
+      .fa-sort-asc {
+        font-size: 15px;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #297cd8;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .monthly-clinic-vs-staff-rx-refill {
+      .dashboard-block-content {
+        background: #f5685a;
+        color: #fff;
+        border: 1px solid #f5685a;
+      }
+
+      .dashboard-block-date {
+        border-bottom: 0 solid #e0e0e0;
+      }
+
+      .fa-sort-desc {
+        color: #f8d71d;
+        font-size: 15px;
+      }
+
+      .fa-sort-asc {
+        font-size: 15px;
+      }
+
+      .dashboard-block-separator {
+        border: 0;
+      }
+
+      .dashboard-block-links {
+        background: #de655a;
+        color: #fff;
+        padding: 2px 10px;
+
+        .last-update-block {
+          color: #fff;
+        }
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .table_clinic_vs_staff {
+      width: 100%;
+      margin-top: 2px;
+
+      th {
+        border: 1px solid #fff;
+        padding: 2px 2px;
+      }
+
+      th.header-top {
+        text-align: center;
+        text-transform: uppercase;
+        width: 50%;
+      }
+
+      th.header-bottom {
+        text-align: center;
+        width: 25%;
+      }
+
+      td {
+        text-align: center;
+        border: 1px solid #fff;
+        padding: 2px 2px;
+        width: 25%;
+
+        .clinic-slit-created {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .clinic-scit-created {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .staff-slit-created {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .staff-scit-created {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .clinic-slit-refill {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .clinic-scit-refill {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .staff-slit-refill {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .staff-scit-refill {
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .dashboard-row-13 {
+    clear: both;
+
+    .dashboard-block {
+      float: left;
+      width: 50%;
+      padding: 5px 5px;
+
+      .dashboard-block-content {
+        border: 1px solid #ccc;
+        padding: 5px 5px;
+      }
+    }
+
+    .clinic-vs-staff-rx-comparison-table {
+      width: 100%;
+
+      caption {
+        text-align: center;
+        text-transform: uppercase;
+        color: #C0463D;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      th {
+        padding: 5px 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+        background: #2e7aa2;
+        color: #fff;
+      }
+
+      td {
+        padding: 5px 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background: #f6f6f6;
+          }
+        }
+
+        td.month-name {
+          color: #8674a6;
+          font-weight: bold;
+        }
+
+        td.created {
+          color: #01c1ea;
+          font-weight: bold;
+
+          a {
+            color: #01c1ea;
+            font-weight: bold;
+          }
+        }
+
+        td.refill {
+          color: #00a663;
+          font-weight: bold;
+
+          a {
+            color: #00a663;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+#custom_example_list_wrapper {
+  max-height: 275px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+
+  .rx-link-list {
+    width: 100%;
+
+    th {
+      background: #2b96cc;
+      color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 5px;
+    }
+
+    td {
+      border: 1px dotted #ccc;
+      padding: 5px 5px;
+    }
+
+    th.amount {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    td.amount {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    tr.summary {
+      background: #2b96cc;
+      color: #fff;
+
+      td.summary-label {
+        font-weight: bold;
+        text-align: right;
+      }
+
+      td.summary-value {
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .order-link-list {
+    width: 100%;
+
+    th {
+      background: #2b96cc;
+      color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 5px;
+    }
+
+    td {
+      border: 1px dotted #ccc;
+      padding: 5px 5px;
+    }
+  }
+
+  .arb-link-list {
+    width: 100%;
+
+    th {
+      background: #2b96cc;
+      color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 5px;
+    }
+
+    td {
+      border: 1px dotted #ccc;
+      padding: 5px 5px;
+    }
+  }
+
+  .cc-link-list {
+    width: 100%;
+
+    th {
+      background: #2b96cc;
+      color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 5px;
+    }
+
+    td {
+      border: 1px dotted #ccc;
+      padding: 5px 5px;
+    }
+  }
+
+  .profile-cc-link-list {
+    width: 100%;
+
+    th {
+      background: #2b96cc;
+      color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 5px;
+    }
+
+    td {
+      border: 1px dotted #ccc;
+      padding: 5px 5px;
+    }
+  }
+}
+
+.mrs-dashboard-settings {
+  .dashboard-settings-table {
+    width: 100%;
+
+    td {
+      border: 1px dotted #ccc;
+      padding: 2px 5px;
+    }
+  }
+}
+
+.refresh-time-wrapper {
+  color: #ccc;
+}

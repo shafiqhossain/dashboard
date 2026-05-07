@@ -1,0 +1,10 @@
+name: MRS Dashboard
+type: module
+description: MRS Dashboard
+package: MRS
+core_version_requirement: ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2024-04-18
+version: '1.0'
+project: 'MRS'
+datestamp: 1605715872

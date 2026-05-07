@@ -1,0 +1,297 @@
+<?php
+
+namespace Drupal\custom_example\Form;
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\CloseModalDialogCommand;
+use Drupal\Core\Extension\ModuleExtensionList;
+use Drupal\Core\Extension\ThemeExtensionList;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\mrs_base\Service\BaseHelper;
+use Drupal\custom_example\Service\DashboardHelper;
+use Drupal\custom_example\Service\DashboardManager;
+use \Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+
+class ViewTotalRxRefillsForm extends FormBase {
+
+  /**
+   * The entity type manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * @var AccountInterface $account
+   */
+  protected $account;
+
+  /**
+   * The database connection.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected $database;
+
+  /**
+   * Configuration Factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactory
+   */
+  protected $configFactory;
+
+  /**
+   * The logger service.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   */
+  protected $logger;
+
+  /**
+  * The list of available modules.
+  *
+  * @var \Drupal\Core\Extension\ModuleExtensionList
+  */
+  protected $extensionListModule;
+
+  /**
+   * The list of available themes.
+   *
+   * @var \Drupal\Core\Extension\ThemeExtensionList
+   */
+  protected $extensionListTheme;
+
+  /**
+   * The base helper service.
+   *
+   * @var \Drupal\mrs_base\Service\BaseHelper
+   */
+  protected $baseHelper;
+
+  /**
+   * The dashboard helper service.
+   *
+   * @var \Drupal\custom_example\Service\DashboardHelper
+   */
+  protected $dashboardHelper;
+
+  /**
+   * The dashboard manager service.
+   *
+   * @var DashboardManager
+   */
+  protected $dashboardManager;
+
+
+  /**
+   * Constructs class.
+   *
+   */
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+    AccountInterface $current_account,
+    Connection $database,
+    ConfigFactoryInterface $config_factory,
+    LoggerChannelFactoryInterface $logger,
+    ModuleExtensionList $extension_list_module,
+    ThemeExtensionList $extension_list_theme,
+    BaseHelper $base_helper,
+    DashboardHelper $dashboard_helper,
+    DashboardManager $dashboard_manager
+  ) {
+    $this->entityTypeManager = $entity_type_manager;
+    $this->account = $current_account;
+    $this->database = $database;
+    $this->configFactory = $config_factory;
+    $this->logger = $logger->get('custom_example');
+    $this->extensionListModule = $extension_list_module;
+    $this->extensionListTheme = $extension_list_theme;
+
+    $this->baseHelper = $base_helper;
+    $this->dashboardHelper = $dashboard_helper;
+    $this->dashboardManager = $dashboard_manager;
+  }
+
+  /**
+   * Creates a new Controller.
+   *
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   The service container.
+   *
+   * @return static
+   *   A new Controller object.
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager'),
+      $container->get('current_user'),
+      $container->get('database'),
+      $container->get('config.factory'),
+      $container->get('logger.factory'),
+      $container->get('extension.list.module'),
+      $container->get('extension.list.theme'),
+      $container->get('base.helper'),
+      $container->get('dashboard.helper'),
+      $container->get('dashboard.manager')
+    );
+  }
+
+  /**
+   * Implements \Drupal\Core\Form\FormInterface::getFormID().
+   */
+  public function getFormID() {
+    return 'custom_example_total_rx_refills_view_form';
+  }
+
+  /**
+   * Implements \Drupal\Core\Form\FormInterface::buildForm().
+   *
+   * @param array $form
+   * @param FormStateInterface $form_state
+   * @return array|AjaxResponse
+   */
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    // Upcoming rx refills
+    $rx_refills_nids = $this->database->select('dashboard_count_by_date', 'n')
+      ->condition('n.dashboard_date', date('Y-m-d'))
+      ->fields('n', ['rx_refills_nids'])
+      ->execute()
+      ->fetchField();
+
+    $rx_links = '<table cellspacing="0" cellpadding="5" class="rx-link-list" id="mrs-dashboard-rx-links-list">';
+    $rx_links .= '<thead>';
+    $rx_links .= '  <tr>';
+    $rx_links .= '    <th>Rx &nbsp;&nbsp;<i class="fa fa-sort"></i></th>';
+    $rx_links .= '    <th>Schedule Date &nbsp;&nbsp;<i class="fa fa-sort"></i></th>';
+    $rx_links .= '    <th>Order Date &nbsp;&nbsp;<i class="fa fa-sort"></i></th>';
+    $rx_links .= '    <th>Patient Name &nbsp;&nbsp;<i class="fa fa-sort"></i></th>';
+    $rx_links .= '    <th>Clinic Name &nbsp;&nbsp;<i class="fa fa-sort"></i></th>';
+    $rx_links .= '  </tr>';
+    $rx_links .= '</thead>';
+    $rx_links .= '<tbody>';
+
+    if (!empty($rx_refills_nids)) {
+      $rows = explode(',', $rx_refills_nids);
+      if (count($rows) > 0) {
+        foreach ($rows as $row) {
+          $links = explode('|', $row);
+          $nid = (isset($links[0]) && !empty($links[0]) ? $links[0] : 0);
+          $scheduled_date = (isset($links[1]) && !empty($links[1]) ? $links[1] : '');
+          if ($nid) {
+            /** @var \Drupal\node\NodeInterface $node */
+            $node = $this->entityTypeManager->getStorage('node')->load($nid);
+          }
+          $order_date = $node->hasField('field_order_date') && !$node->get('field_order_date')->isEmpty() ?
+            date('Y-m-d', strtotime($node->get('field_order_date')->value)) : '';
+          $patient_name = $node->hasField('field_patient_name') && !$node->get('field_patient_name')->isEmpty() ?
+            $node->get('field_patient_name')->value : '';
+
+          $clinic_nid = $node->hasField('field_rx_associated_clinic') && !$node->get('field_rx_associated_clinic')->isEmpty() ?
+            $node->get('field_rx_associated_clinic')->target_id : 0;
+          /** @var \Drupal\node\NodeInterface $clinic_node */
+          $clinic_node = $this->entityTypeManager->getStorage('node')->load($clinic_nid);
+          $clinic_name = $clinic_node->getTitle();
+
+          $rx_links .= '  <tr>';
+          if ($node) {
+            $rx_links .= '    <td><a target="_blank" href="/node/' . $node->id() . '">' . $node->getTitle() . '</a></td>';
+          }
+          else {
+            $rx_links .= '    <td>' . $nid . '</td>';
+          }
+          $rx_links .= '    <td>' . $scheduled_date . '</td>';
+          $rx_links .= '    <td>' . $order_date . '</td>';
+          $rx_links .= '    <td>' . $patient_name . '</td>';
+          if ($clinic_node) {
+            $rx_links .= '    <td><a target="_blank" href="/node/' . $clinic_node->id() . '">' . $clinic_node->getTitle() . '</a></td>';
+          }
+          else {
+            $rx_links .= '    <td>' . $clinic_nid . '</td>';
+          }
+          $rx_links .= '  </tr>';
+        }
+      }
+    }
+    else {
+      $rx_links .= '  <tr>';
+      $rx_links .= '    <td colspan="5">Sorry! No information found!</td>';
+      $rx_links .= '  </tr>';
+    }
+    $rx_links .= '</tbody>';
+    $rx_links .= '</table>';
+
+    $rx_links .= '<script>';
+    $rx_links .= <<<EOT
+jQuery(document).ready(function() {
+  if(jQuery('#mrs-dashboard-rx-links-list').length) {
+    jQuery('#mrs-dashboard-rx-links-list').DataTable({
+	  "searching": false,
+	  "paging":   false,
+	  "lengthChange": false,
+	  "info": false
+    });
+  }
+});
+EOT;
+    $rx_links .= '</script>';
+
+    $form['results'] = [
+      '#markup' => Markup::create($rx_links),
+      '#prefix' => '<div id="custom_example_list_wrapper">',
+      '#suffix' => '</div>',
+    ];
+
+    $form['actions']['#type'] = 'actions';
+    $form['actions']['close'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Close'),
+      '#attributes' => [
+        'class' => [
+          'btn-submit',
+        ],
+      ],
+      '#ajax' => [
+        'callback' => [$this, 'cancelCallback'],
+        'event' => 'click',
+        'progress' => [
+          'type' => 'throbber',
+          'message' => NULL,
+        ],
+      ],
+    ];
+
+    $form['#attached']['library'][] = 'custom_example/dashboard-style';
+
+    return $form;
+  }
+
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function cancelCallback(array &$form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+    $response->addCommand(new CloseModalDialogCommand());
+    return $response;
+  }
+
+}

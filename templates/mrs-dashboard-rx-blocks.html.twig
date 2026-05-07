@@ -1,0 +1,260 @@
+<div class="mrs-dashboard-home-rx">
+	<div class="content-row dashboard-row-4 clearfix">
+		<div class="dashboard-block daily-order-submitted" id="daily-order-submitted">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">ORDER SUBMITTED</div>
+			<div class="dashboard-block-date">Today | {{ total_order_submitted_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_order_submitted|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_order_submitted_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_order_submitted_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_order_submitted_last_update }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="order-submitted-display-link use-ajax"  data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_order_submitted/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="order-submitted-refresh-link use-ajax" href="/custom_example/total_order_submitted/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block rx-pending" id="rx-pending">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">RX PENDING</div>
+			<div class="dashboard-block-date">Today | {{ total_rx_pending_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_rx_pending|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_rx_pending_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_rx_pending_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_rx_pending_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="rx-pending-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_rx_pending/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="rx-pending-refresh-link use-ajax" href="/custom_example/total_rx_pending/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block rx-scheduled" id="rx-scheduled">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">RX SCHEDULED</div>
+			<div class="dashboard-block-date">Today | {{ total_rx_scheduled_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_rx_scheduled|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_rx_scheduled_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_rx_scheduled_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_rx_scheduled_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="rx-scheduled-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_rx_scheduled/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="rx-scheduled-refresh-link use-ajax" href="/custom_example/total_rx_scheduled/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block rx-refills" id="rx-refills">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">UPCOMING RX REFILLS</div>
+			<div class="dashboard-block-date">Today | {{ total_rx_refills_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_rx_refills|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_rx_refills_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_rx_refills_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_rx_refills_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="rx-refills-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_rx_refills/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="rx-refills-refresh-link use-ajax" href="/custom_example/total_upcoming_rx_refills/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<div class="content-row dashboard-row-5 clearfix">
+		<div class="dashboard-block expiring-rx" id="expiring-rx">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">EXPIRING RX</div>
+			<div class="dashboard-block-date">Today | {{ total_expiring_rx_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_expiring_rx|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_expiring_rx_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_expiring_rx_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_expiring_rx_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="expiring-rx-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_expiring_rx/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="expiring-rx-refresh-link use-ajax" href="/custom_example/total_expiring_rx/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block expiring-arb" id="expiring-arb">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">EXPIRING ARB</div>
+			<div class="dashboard-block-date">Today | {{ total_expiring_arb_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_expiring_arb|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_expiring_arb_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_expiring_arb_marker }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_expiring_arb_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="expiring-arb-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_expiring_arb/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="expiring-arb-refresh-link use-ajax" href="/custom_example/total_expiring_arb/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block expiring-cc" id="expiring-cc">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">EXPIRING CREDIT CARD</div>
+			<div class="dashboard-block-date">Today | {{ total_expiring_cc_date|raw }}</div>
+			<div class="dashboard-block-amount">{{ date_total_expiring_cc|raw }}</div>
+			<div class="dashboard-block-amount-percent"><span class="amount-percent">{{ date_total_expiring_cc_percent|raw }}</span>&nbsp;&nbsp;<span class="amount-percent-marker">{{ date_total_expiring_cc_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ date_expiring_cc_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="expiring-cc-display-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/total_expiring_cc/view"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="expiring-cc-refresh-link use-ajax" href="/custom_example/total_expiring_cc/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block silent-post-summary" id="silent-post-summary">
+		  <div class="dashboard-block-content">
+			<div class="dashboard-block-title">SILENT POST SUMMARY</div>
+			<div class="dashboard-block-date">This Year | {{ silent_post_summary_date|raw }}</div>
+			<div class="dashboard-block-label">Resolved | Pending</div>
+			<div class="dashboard-block-amount"><span class="silent-post-resolved">{{ silent_post_resolved|raw }}</span> | <span class="silent-post-pending">{{ silent_post_pending }}</span></div>
+			<div class="dashboard-block-amount-percent"><span class="silent-post-resolved-percent">{{ silent_post_resolved_percent|raw }}</span>&nbsp;&nbsp;<span class="silent-post-resolved-percent-marker">{{ silent_post_resolved_marker }}</span> | <span class="silent-post-pending-percent">{{ silent_post_pending_percent|raw }}</span>&nbsp;&nbsp;<span class="silent-post-pending-percent-marker">{{ silent_post_pending_marker|raw }}</span></div>
+			<div class="dashboard-block-separator"></div>
+			<div class="dashboard-block-links">
+				<span class="last-update-block">{{ silent_post_summary_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a target="_blank" class="silent-post-summary-link" href="/silentpost/report"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="silent-post-summary-link use-ajax" href="/custom_example/silent_post_summary/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+
+
+	<div class="content-row dashboard-row-6 clearfix">
+	  <div class="content-row-left">
+		  <div class="dashboard-block monthly-clinic-vs-staff-rx-created" id="monthly-clinic-vs-staff-rx-created">
+			<div class="dashboard-block-content">
+			  <div class="dashboard-block-title">CLINIC VS STAFF RX CREATED</div>
+			  <div class="dashboard-block-date">This Month | {{ clinic_vs_staff_rx_created_month|raw }}</div>
+			  <div class="dashboard-block-data">
+				<table cellspacing="0" cellpadding="5" class="table_clinic_vs_staff monthly_table_clinic_vs_staff_rx_created">
+				  <tr>
+					<th colspan="2" class="header-top">Clinic</th>
+					<th colspan="2" class="header-top">Staff</th>
+				  </tr>
+				  <tr>
+					<th class="header-bottom">SLIT</th>
+					<th class="header-bottom">SCIT</th>
+					<th class="header-bottom">SLIT</th>
+					<th class="header-bottom">SCIT</th>
+				  </tr>
+				  <tr>
+					<td><span class="clinic-slit-created">{{ monthly_clinic_total_slit_created|raw }}</span></td>
+					<td><span class="clinic-scit-created">{{ monthly_clinic_total_scit_created|raw }}</span></td>
+					<td><span class="staff-slit-created">{{ monthly_staff_total_slit_created|raw }}</span></td>
+					<td><span class="staff-scit-created">{{ monthly_staff_total_scit_created|raw }}</span></td>
+				  </tr>
+				  <tr>
+					<td><div class="dashboard-block-created-percent"><span class="clinic-slit-created-percent">{{ monthly_clinic_total_slit_created_percent|raw }}</span>&nbsp;&nbsp;<span class="clinic-slit-created-marker">{{ monthly_clinic_total_slit_created_marker|raw }}</span></div></td>
+					<td><div class="dashboard-block-created-percent"><span class="clinic-scit-created-percent">{{ monthly_clinic_total_scit_created_percent|raw }}</span>&nbsp;&nbsp;<span class="clinic-scit-created-marker">{{ monthly_clinic_total_scit_created_marker|raw }}</span></div></td>
+					<td><div class="dashboard-block-created-percent"><span class="staff-slit-created-percent">{{ monthly_staff_total_slit_created_percent|raw }}</span>&nbsp;&nbsp;<span class="staff-slit-created-marker">{{ monthly_staff_total_slit_created_marker|raw }}</span></div></td>
+					<td><div class="dashboard-block-created-percent"><span class="staff-scit-created-percent">{{ monthly_staff_total_scit_created_percent|raw }}</span>&nbsp;&nbsp;<span class="staff-scit-created-marker">{{ monthly_staff_total_scit_created_marker|raw }}</span></div></td>
+				  </tr>
+				</table>
+			  </div>
+			  <div class="dashboard-block-separator"></div>
+			  <div class="dashboard-block-links">
+				<span class="last-update-block">{{ monthly_clinic_vs_staff_rx_created_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="clinic-vs-staff-rx-created-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/clinic_vs_staff_created_refills/list/monthly/created/{{ "now"|date('n') }}/{{ "now"|date('Y') }}"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="clinic-vs-staff-rx-created-refresh-link use-ajax" href="/custom_example/clinic_vs_staff_rx_created/monthly/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="dashboard-block monthly-clinic-vs-staff-rx-refill" id="monthly-clinic-vs-staff-rx-refill">
+			<div class="dashboard-block-content">
+			  <div class="dashboard-block-title">CLINIC VS STAFF RX REFILLS</div>
+			  <div class="dashboard-block-date">This Month | {{ clinic_vs_staff_rx_refill_month|raw }}</div>
+			  <div class="dashboard-block-data">
+				<table cellspacing="0" cellpadding="5" class="table_clinic_vs_staff monthly_table_clinic_vs_staff_rx_refill">
+				  <tr>
+					<th colspan="2" class="header-top">Clinic</th>
+					<th colspan="2" class="header-top">Staff</th>
+				  </tr>
+				  <tr>
+					<th class="header-bottom">SLIT</th>
+					<th class="header-bottom">SCIT</th>
+					<th class="header-bottom">SLIT</th>
+					<th class="header-bottom">SCIT</th>
+				  </tr>
+				  <tr>
+					<td><span class="clinic-slit-refill">{{ monthly_clinic_total_slit_refill|raw }}</span></td>
+					<td><span class="clinic-scit-refill">{{ monthly_clinic_total_scit_refill|raw }}</span></td>
+					<td><span class="staff-slit-refill">{{ monthly_staff_total_slit_refill|raw }}</span></td>
+					<td><span class="staff-scit-refill">{{ monthly_staff_total_scit_refill|raw }}</span></td>
+				  </tr>
+				  <tr>
+					<td><div class="dashboard-block-refill-percent"><span class="clinic-slit-refill-percent">{{ monthly_clinic_total_slit_refill_percent|raw }}</span>&nbsp;&nbsp;<span class="clinic-slit-refill-marker">{{ monthly_clinic_total_slit_refill_marker|raw }}</span></div></td>
+					<td><div class="dashboard-block-refill-percent"><span class="clinic-scit-refill-percent">{{ monthly_clinic_total_scit_refill_percent|raw }}</span>&nbsp;&nbsp;<span class="clinic-scit-refill-marker">{{ monthly_clinic_total_scit_refill_marker|raw }}</span></div></td>
+					<td><div class="dashboard-block-refill-percent"><span class="staff-slit-refill-percent">{{ monthly_staff_total_slit_refill_percent|raw }}</span>&nbsp;&nbsp;<span class="staff-slit-refill-marker">{{ monthly_staff_total_slit_refill_marker|raw }}</span></div></td>
+					<td><div class="dashboard-block-refill-percent"><span class="staff-scit-refill-percent">{{ monthly_staff_total_scit_refill_percent|raw }}</span>&nbsp;&nbsp;<span class="staff-scit-refill-marker">{{ monthly_staff_total_scit_refill_marker|raw }}</span></div></td>
+				  </tr>
+				</table>
+			  </div>
+			  <div class="dashboard-block-separator"></div>
+			  <div class="dashboard-block-links">
+				<span class="last-update-block">{{ monthly_clinic_vs_staff_rx_refill_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="display-block"><a class="clinic-vs-staff-rx-refill-link use-ajax" data-dialog-options='{"dialogClass":"dashboard-dialog", "width":"800"}' data-dialog-type="modal" href="/custom_example/report/clinic_vs_staff_created_refills/list/monthly/refills/{{ "now"|date('n') }}/{{ "now"|date('Y') }}"><i class="fa fa-th" aria-hidden="true">&nbsp;</i></a></span>
+				<span class="refresh-block"><a class="clinic-vs-staff-rx-refill-refresh-link use-ajax" href="/custom_example/clinic_vs_staff_rx_refill/monthly/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+
+	  <div class="content-row-right">
+		  <div class="dashboard-block monthly-compare-clinic-vs-staff-rx" id="monthly-compare-clinic-vs-staff-rx">
+			<div class="dashboard-block-content">
+			  <div class="dashboard-block-table" id="monthly-table-clinic-vs-staff-rx">
+				{{ comparison_table_clinic_vs_staff_rx|raw }}
+			  </div>
+			  <div class="dashboard-block-separator"></div>
+			  <div class="dashboard-block-links">
+				<span class="last-update-block">{{ clinic_vs_staff_rx_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="refresh-block"><a class="rx-clinic-vs-staff-link use-ajax" href="/custom_example/rx_clinic_vs_staff/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+
+	</div>
+
+	<div class="content-row dashboard-row-7 clearfix">
+		<div class="dashboard-block monthly-chart-slit-vs-scit-created" id="monthly-chart-slit-vs-scit-created">
+		  <div class="dashboard-block-content">
+			{{ attach_library('custom_example/monthly-slit-vs-scit-created-container') }}
+			<div id="monthly-slit-vs-scit-created-container"></div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block monthly-chart-slit-vs-scit-refills" id="monthly-chart-slit-vs-scit-refills">
+		  <div class="dashboard-block-content">
+			{{ attach_library('custom_example/monthly-slit-vs-scit-refills-container') }}
+			<div id="monthly-slit-vs-scit-refills-container"></div>
+		  </div>
+		</div>
+
+		<div class="dashboard-block monthly-slit-vs-scit" id="monthly-slit-vs-scit">
+		  <div class="dashboard-block-content">
+		    <div class="dashboard-block-table" id="monthly-table-slit-vs-scit">
+			  {{ comparison_table_slit_vs_scit|raw }}
+		    </div>
+		    <div class="dashboard-block-separator"></div>
+		    <div class="dashboard-block-links">
+			  <span class="last-update-block">{{ rx_slit_vs_scit_last_update|raw }}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+			  <span class="refresh-block"><a class="rx-slit-vs-scit-link use-ajax" href="/custom_example/rx_slit_vs_scit/refresh"><i class="fa fa-refresh" aria-hidden="true">&nbsp;</i></a></span>
+		    </div>
+		  </div>
+		</div>
+
+	</div>
+
+</div>
+
+
+

@@ -1,0 +1,761 @@
+<?php
+/**
+ * @file
+ * Primarily Drupal hooks and global API functions to manipulate views.
+ *
+ * This is the main module file for Views. The main entry points into
+ * this module are views_page() and views_block(], where it handles
+ * incoming page and block requests.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+
+/**
+ * Implements hook_theme().
+ *
+ * Defines the theming capabilities provided by this module.
+ */
+function custom_example_theme() {
+  return [
+    'custom_example_total_expiring_arb_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_order_submitted_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_rx_pending_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_rx_scheduled_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_rx_refills_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_expiring_rx_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_expiring_cc_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_total_expiring_profile_cc_view_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+
+    'custom_example_update_all_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_clean_all_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_settings_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-settings-form',
+    ],
+
+    'custom_example_report_daily_sales_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_monthly_sales_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+
+    // Reports
+    'custom_example_report_daily_payments_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_monthly_payments_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_daily_rx_created_refills_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_monthly_rx_created_refills_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_daily_clinic_vs_staff_created_refills_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_monthly_clinic_vs_staff_list_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+    'custom_example_report_monthly_clinic_vs_staff_comparison_form' => [
+      'render element' => 'form',
+      'template' => 'mrs-dashboard-view-form',
+    ],
+
+    'custom_example_view_page' => [
+      'template' => 'mrs-dashboard-view-page',
+      'variables' => [
+        // id: daily-total-rx-amount
+        'total_rx_amount_date' => NULL,
+        'date_total_rx_amount' => NULL,
+        'date_rx_amount_last_update' => NULL,
+        'date_total_rx_amount_percent' => NULL,
+        'date_total_rx_amount_marker' => NULL,
+
+        // id: daily-total-order-amount
+        'total_order_amount_date' => NULL,
+        'date_total_order_amount' => NULL,
+        'date_order_amount_last_update' => NULL,
+        'date_total_order_amount_percent' => NULL,
+        'date_total_order_amount_marker' => NULL,
+
+        // id: weekly-total-amount
+        'total_weekly_amount_week' => NULL,
+        'weekly_total_rx_amount' => NULL,
+        'weekly_total_order_amount' => NULL,
+        'weekly_rx_amount_last_update' => NULL,
+        'weekly_total_rx_amount_percent' => NULL,
+        'weekly_total_rx_amount_marker' => NULL,
+        'weekly_total_order_amount_percent' => NULL,
+        'weekly_total_order_amount_marker' => NULL,
+
+        // id: monthly-total-amount
+        'total_monthly_amount_month' => NULL,
+        'total_monthly_amount_year' => NULL,
+        'monthly_total_rx_amount' => NULL,
+        'monthly_total_order_amount' => NULL,
+        'monthly_rx_amount_last_update' => NULL,
+        'monthly_total_rx_amount_percent' => NULL,
+        'monthly_total_rx_amount_marker' => NULL,
+        'monthly_total_order_amount_percent' => NULL,
+        'monthly_total_order_amount_marker' => NULL,
+
+        // id: daily-total-po-amount
+        'total_po_amount_date' => NULL,
+        'daily_total_po_amount' => NULL,
+        'daily_total_po_created' => NULL,
+        'date_po_amount_last_update' => NULL,
+        'daily_total_po_amount_percent' => NULL,
+        'daily_total_po_amount_marker' => NULL,
+        'daily_total_po_created_percent' => NULL,
+        'daily_total_po_created_marker' => NULL,
+
+        // id: daily-total-po-refund-amount
+        'total_po_refund_amount_date' => NULL,
+        'daily_total_po_refund_amount' => NULL,
+        'daily_total_po_refund_created' => NULL,
+        'date_po_refund_amount_last_update' => NULL,
+        'daily_total_po_refund_amount_percent' => NULL,
+        'daily_total_po_refund_amount_marker' => NULL,
+        'daily_total_po_refund_created_percent' => NULL,
+        'daily_total_po_refund_created_marker' => NULL,
+
+        // id: weekly-total-po-amount
+        'total_weekly_po_amount_week' => NULL,
+        'weekly_total_po_amount' => NULL,
+        'weekly_total_po_refund_amount' => NULL,
+        'weekly_po_amount_last_update' => NULL,
+        'weekly_total_po_amount_percent' => NULL,
+        'weekly_total_po_amount_marker' => NULL,
+        'weekly_total_po_refund_amount_percent' => NULL,
+        'weekly_total_po_refund_amount_marker' => NULL,
+
+        // id: monthly-total-po-amount
+        'total_monthly_po_amount_month' => NULL,
+        'total_monthly_po_amount_year' => NULL,
+        'monthly_total_po_amount' => NULL,
+        'monthly_total_po_refund_amount' => NULL,
+        'monthly_po_amount_last_update' => NULL,
+        'monthly_total_po_amount_percent' => NULL,
+        'monthly_total_po_amount_marker' => NULL,
+        'monthly_total_po_refund_amount_percent' => NULL,
+        'monthly_total_po_refund_amount_marker' => NULL,
+
+        // id: monthly-chart-rx-amount
+        'total_monthly_rx_amount_year' => NULL,
+        'chart_monthly_rx_amounts' => NULL,
+
+        // id: monthly-chart-order-amount
+        'total_monthly_order_amount_year' => NULL,
+        'chart_monthly_order_amounts' => NULL,
+
+        // id: monthly-chart-rx-and-order
+        'chart_compare_monthly_amount_year' => NULL,
+        'chart_compare_monthly_rx_label_prev' => NULL,
+        'chart_compare_monthly_rx_amounts_prev' => NULL,
+        'chart_compare_monthly_rx_label_current' => NULL,
+        'chart_compare_monthly_rx_amounts_current' => NULL,
+        'chart_compare_monthly_order_label_prev' => NULL,
+        'chart_compare_monthly_order_amounts_prev' => NULL,
+        'chart_compare_monthly_order_label_current' => NULL,
+        'chart_compare_monthly_order_amounts_current' => NULL,
+        'chart_compare_monthly_po_label_prev' => NULL,
+        'chart_compare_monthly_po_amounts_prev' => NULL,
+        'chart_compare_monthly_po_label_current' => NULL,
+        'chart_compare_monthly_po_amounts_current' => NULL,
+
+        // id: daily-rx-slit-created
+        'total_slit_scit_created_date' => NULL,
+        'date_total_slit_created' => NULL,
+        'date_slit_scit_created_last_update' => NULL,
+        'date_total_slit_created_percent' => NULL,
+        'date_total_slit_created_marker' => NULL,
+
+        // id: daily-rx-scit-created
+        'date_total_scit_created' => NULL,
+        'date_total_scit_created_percent' => NULL,
+        'date_total_scit_created_marker' => NULL,
+
+        // id: daily-rx-slit-refills
+        'total_slit_refills_date' => NULL,
+        'date_total_slit_refills' => NULL,
+        'date_slit_scit_refills_last_update' => NULL,
+        'date_total_slit_refills_percent' => NULL,
+        'date_total_slit_refills_marker' => NULL,
+
+        //id: daily-rx-scit-refills
+        'total_scit_refills_date' => NULL,
+        'date_total_scit_refills' => NULL,
+        'date_total_scit_refills_percent' => NULL,
+        'date_total_scit_refills_marker' => NULL,
+
+        // id: monthly-chart-slit-vs-scit-created
+        'monthly_slit_vs_scit_created_year' => NULL,
+        'chart_monthly_compare_slit_created' => NULL,
+        'chart_monthly_compare_scit_created' => NULL,
+
+        // id: monthly-chart-slit-vs-scit-refills
+        'monthly_slit_vs_scit_refills_year' => NULL,
+        'chart_monthly_compare_slit_refills_label_prev' => NULL,
+        'chart_monthly_compare_slit_refills_label_current' => NULL,
+        'chart_monthly_compare_scit_refills_label_prev' => NULL,
+        'chart_monthly_compare_scit_refills_label_current' => NULL,
+        'chart_monthly_compare_slit_refills_prev' => NULL,
+        'chart_monthly_compare_slit_refills_current' => NULL,
+        'chart_monthly_compare_scit_refills_prev' => NULL,
+        'chart_monthly_compare_scit_refills_current' => NULL,
+
+        // id: monthly-slit-vs-scit
+        'rx_slit_vs_scit_last_update' => NULL,
+        'comparison_table_slit_vs_scit' => NULL,
+
+        // id: daily-rx-successful-payment
+        'total_successful_payment_date' => NULL,
+        'date_total_successful_payment' => NULL,
+        'date_successful_payment_last_update' => NULL,
+        'date_total_successful_payment_percent' => NULL,
+        'date_total_successful_payment_marker' => NULL,
+
+        // id: daily-rx-refund-payment
+        'total_refund_payment_date' => NULL,
+        'date_total_refund_payment' => NULL,
+        'date_refund_payment_last_update' => NULL,
+        'date_total_refund_payment_percent' => NULL,
+        'date_total_refund_payment_marker' => NULL,
+
+        // id: daily-rx-invoice-payment
+        'total_invoice_payment_date' => NULL,
+        'date_total_invoice_payment' => NULL,
+        'date_invoice_payment_last_update' => NULL,
+        'date_total_invoice_payment_percent' => NULL,
+        'date_total_invoice_payment_marker' => NULL,
+
+        // id: daily-rx-denied-payment
+        'total_denied_payment_date' => NULL,
+        'date_total_denied_payment' => NULL,
+        'date_denied_payment_last_update' => NULL,
+        'date_total_denied_payment_percent' => NULL,
+        'date_total_denied_payment_marker' => NULL,
+
+        // id: daily-rx-void-payment
+        'total_void_payment_date' => NULL,
+        'date_total_void_payment' => NULL,
+        'date_void_payment_last_update' => NULL,
+        'date_total_void_payment_percent' => NULL,
+        'date_total_void_payment_marker' => NULL,
+
+        // id: daily-rx-error-payment
+        'total_error_payment_date' => NULL,
+        'date_total_error_payment' => NULL,
+        'date_error_payment_last_update' => NULL,
+        'date_total_error_payment_percent' => NULL,
+        'date_total_error_payment_marker' => NULL,
+
+        // id: daily-rx-sales-amount
+        'daily_sales_amount_date' => NULL,
+        'daily_sales_amount' => NULL,
+        'daily_sales_amount_last_update' => NULL,
+        'daily_sales_amount_percent' => NULL,
+        'daily_sales_amount_marker' => NULL,
+
+        // id: monthly-sales-amount
+        'monthly_sales_amount_month' => NULL,
+        'monthly_sales_amount_year' => NULL,
+        'monthly_sales_amount' => NULL,
+        'monthly_sales_amount_last_update' => NULL,
+        'monthly_sales_amount_percent' => NULL,
+        'monthly_sales_amount_marker' => NULL,
+
+        // id: daily-chart-sales-amount
+        'total_daily_sales_amount_range' => NULL,
+        'chart_daily_sales_amounts' => NULL,
+
+        // id: monthly-chart-sales-amount
+        'total_monthly_sales_amount_year' => NULL,
+        'chart_monthly_sales_amounts' => NULL,
+
+        // id: monthly-payments
+        'rx_payments_last_update' => NULL,
+        'rx_payments_comparison' => NULL,
+
+        // id: daily-order-submitted
+        'total_order_submitted_date' => NULL,
+        'date_total_order_submitted' => NULL,
+        'date_order_submitted_last_update' => NULL,
+        'date_total_order_submitted_percent' => NULL,
+        'date_total_order_submitted_marker' => NULL,
+
+        // id: rx-pending
+        'total_rx_pending_date' => NULL,
+        'date_total_rx_pending' => NULL,
+        'date_rx_pending_last_update' => NULL,
+        'date_total_rx_pending_percent' => NULL,
+        'date_total_rx_pending_marker' => NULL,
+
+        // id: rx-scheduled
+        'total_rx_scheduled_date' => NULL,
+        'date_total_rx_scheduled' => NULL,
+        'date_rx_scheduled_last_update' => NULL,
+        'date_total_rx_scheduled_percent' => NULL,
+        'date_total_rx_scheduled_marker' => NULL,
+
+        // id: rx-refills
+        'total_rx_refills_date' => NULL,
+        'date_total_rx_refills' => NULL,
+        'date_rx_refills_last_update' => NULL,
+        'date_total_rx_refills_percent' => NULL,
+        'date_total_rx_refills_marker' => NULL,
+
+        // id: expiring-rx
+        'total_expiring_rx_date' => NULL,
+        'date_total_expiring_rx' => NULL,
+        'date_expiring_rx_last_update' => NULL,
+        'date_total_expiring_rx_percent' => NULL,
+        'date_total_expiring_rx_marker' => NULL,
+
+        // id: expiring-arb
+        'total_expiring_arb_date' => NULL,
+        'date_total_expiring_arb' => NULL,
+        'date_expiring_arb_last_update' => NULL,
+        'date_total_expiring_arb_percent' => NULL,
+        'date_total_expiring_arb_marker' => NULL,
+
+        // id: expiring-cc
+        'total_expiring_cc_date' => NULL,
+        'date_total_expiring_cc' => NULL,
+        'date_expiring_cc_last_update' => NULL,
+        'date_total_expiring_cc_percent' => NULL,
+        'date_total_expiring_cc_marker' => NULL,
+
+        // id: expiring-profile-cc
+        'total_expiring_profile_cc_date' => NULL,
+        'date_total_expiring_profile_cc' => NULL,
+        'date_expiring_profile_cc_last_update' => NULL,
+        'date_total_expiring_profile_cc_percent' => NULL,
+        'date_total_expiring_profile_cc_marker' => NULL,
+
+        // id: clinics-summary
+        'total_clinics_date' => NULL,
+        'date_total_clinics' => NULL,
+        'date_total_clinics_last_update' => NULL,
+        'date_total_clinics_percent' => NULL,
+        'date_total_clinics_percent_marker' => NULL,
+
+        // id: silent-post-summary
+        'silent_post_summary_date' => NULL,
+        'silent_post_resolved' => NULL,
+        'silent_post_pending' => NULL,
+        'silent_post_summary_last_update' => NULL,
+        'silent_post_resolved_percent' => NULL,
+        'silent_post_resolved_marker' => NULL,
+        'silent_post_pending_percent' => NULL,
+        'silent_post_pending_marker' => NULL,
+
+        // id: daily-clinic-vs-staff-rx-created
+        'clinic_vs_staff_rx_created_date' => NULL,
+        'date_clinic_total_slit_created' => NULL,
+        'date_clinic_total_scit_created' => NULL,
+        'date_staff_total_slit_created' => NULL,
+        'date_staff_total_scit_created' => NULL,
+        'date_clinic_total_slit_created_percent' => NULL,
+        'date_clinic_total_slit_created_marker' => NULL,
+        'date_clinic_total_scit_created_percent' => NULL,
+        'date_clinic_total_scit_created_marker' => NULL,
+        'date_staff_total_slit_created_percent' => NULL,
+        'date_staff_total_slit_created_marker' => NULL,
+        'date_staff_total_scit_created_percent' => NULL,
+        'date_staff_total_scit_created_marker' => NULL,
+        'daily_clinic_vs_staff_rx_created_last_update' => NULL,
+
+        // id: monthly-clinic-vs-staff-rx-created
+        'clinic_vs_staff_rx_created_month' => NULL,
+        'monthly_clinic_total_slit_created' => NULL,
+        'monthly_clinic_total_scit_created' => NULL,
+        'monthly_staff_total_slit_created' => NULL,
+        'monthly_staff_total_scit_created' => NULL,
+        'monthly_clinic_total_slit_created_percent' => NULL,
+        'monthly_clinic_total_slit_created_marker' => NULL,
+        'monthly_clinic_total_scit_created_percent' => NULL,
+        'monthly_clinic_total_scit_created_marker' => NULL,
+        'monthly_staff_total_slit_created_percent' => NULL,
+        'monthly_staff_total_slit_created_marker' => NULL,
+        'monthly_staff_total_scit_created_percent' => NULL,
+        'monthly_staff_total_scit_created_marker' => NULL,
+        'monthly_clinic_vs_staff_rx_created_last_update' => NULL,
+
+        // id: daily-clinic-vs-staff-rx-refill
+        'clinic_vs_staff_rx_refill_date' => NULL,
+        'date_clinic_total_slit_refill' => NULL,
+        'date_clinic_total_scit_refill' => NULL,
+        'date_staff_total_slit_refill' => NULL,
+        'date_staff_total_scit_refill' => NULL,
+        'date_clinic_total_slit_refill_percent' => NULL,
+        'date_clinic_total_slit_refill_marker' => NULL,
+        'date_clinic_total_scit_refill_percent' => NULL,
+        'date_clinic_total_scit_refill_marker' => NULL,
+        'date_staff_total_slit_refill_percent' => NULL,
+        'date_staff_total_slit_refill_marker' => NULL,
+        'date_staff_total_scit_refill_percent' => NULL,
+        'date_staff_total_scit_refill_marker' => NULL,
+        'daily_clinic_vs_staff_rx_refill_last_update' => NULL,
+
+        // id: monthly-clinic-vs-staff-rx-refill
+        'clinic_vs_staff_rx_refill_month' => NULL,
+        'monthly_clinic_total_slit_refill' => NULL,
+        'monthly_clinic_total_scit_refill' => NULL,
+        'monthly_staff_total_slit_refill' => NULL,
+        'monthly_staff_total_scit_refill' => NULL,
+        'monthly_clinic_total_slit_refill_percent' => NULL,
+        'monthly_clinic_total_slit_refill_marker' => NULL,
+        'monthly_clinic_total_scit_refill_percent' => NULL,
+        'monthly_clinic_total_scit_refill_marker' => NULL,
+        'monthly_staff_total_slit_refill_percent' => NULL,
+        'monthly_staff_total_slit_refill_marker' => NULL,
+        'monthly_staff_total_scit_refill_percent' => NULL,
+        'monthly_staff_total_scit_refill_marker' => NULL,
+        'monthly_clinic_vs_staff_rx_refill_last_update' => NULL,
+
+        // id: monthly-chart-clinic-vs-staff-rx
+        'monthly_clinic_vs_staff_rx_year' => NULL,
+        'chart_monthly_compare_clinic_slit_created' => NULL,
+        'chart_monthly_compare_clinic_scit_created' => NULL,
+        'chart_monthly_compare_staff_slit_created' => NULL,
+        'chart_monthly_compare_staff_scit_created' => NULL,
+        'chart_monthly_compare_clinic_slit_refill' => NULL,
+        'chart_monthly_compare_clinic_scit_refill' => NULL,
+        'chart_monthly_compare_staff_slit_refill' => NULL,
+        'chart_monthly_compare_staff_scit_refill' => NULL,
+
+        // id: monthly-clinic-vs-staff-rx
+        'comparison_table_clinic_vs_staff_rx' => NULL,
+        'clinic_vs_staff_rx_last_update' => NULL,
+
+        // refresh interval
+        'dashboard_refresh_time' => NULL,
+        'dashboard_last_refresh_time' => NULL,
+      ],
+    ],
+
+    'custom_example_sales_blocks' => [
+      'template' => 'mrs-dashboard-sales-blocks',
+      'variables' => [
+        // id: weekly-total-amount
+        'total_weekly_amount_week' => NULL,
+        'weekly_total_rx_amount' => NULL,
+        'weekly_total_order_amount' => NULL,
+        'weekly_total_rx_amount_percent' => NULL,
+        'weekly_total_rx_amount_marker' => NULL,
+        'weekly_total_order_amount_percent' => NULL,
+        'weekly_total_order_amount_marker' => NULL,
+        'weekly_rx_amount_last_update' => NULL,
+
+        // id: monthly-total-amount
+        'total_monthly_amount_month' => NULL,
+        'total_monthly_amount_year' => NULL,
+        'monthly_total_rx_amount' => NULL,
+        'monthly_total_order_amount' => NULL,
+        'monthly_total_rx_amount_percent' => NULL,
+        'monthly_total_rx_amount_marker' => NULL,
+        'monthly_total_order_amount_percent' => NULL,
+        'monthly_total_order_amount_marker' => NULL,
+        'monthly_rx_amount_last_update' => NULL,
+
+        // id: weekly-total-po-amount
+        'total_weekly_po_amount_week' => NULL,
+        'weekly_total_po_amount' => NULL,
+        'weekly_total_po_refund_amount' => NULL,
+        'weekly_total_po_amount_percent' => NULL,
+        'weekly_total_po_amount_marker' => NULL,
+        'weekly_total_po_refund_amount_percent' => NULL,
+        'weekly_total_po_refund_amount_marker' => NULL,
+        'weekly_po_amount_last_update' => NULL,
+
+        // id: monthly-total-po-amount
+        'total_monthly_po_amount_month' => NULL,
+        'total_monthly_po_amount_year' => NULL,
+        'monthly_total_po_amount' => NULL,
+        'monthly_total_po_refund_amount' => NULL,
+        'monthly_total_po_amount_percent' => NULL,
+        'monthly_total_po_amount_marker' => NULL,
+        'monthly_total_po_refund_amount_percent' => NULL,
+        'monthly_total_po_refund_amount_marker' => NULL,
+        'monthly_po_amount_last_update' => NULL,
+
+        // id: daily-rx-successful-payment
+        'total_successful_payment_date' => NULL,
+        'date_total_successful_payment' => NULL,
+        'date_total_successful_payment_percent' => NULL,
+        'date_total_successful_payment_marker' => NULL,
+        'date_successful_payment_last_update' => NULL,
+
+        // id: daily-rx-refund-payment
+        'total_refund_payment_date' => NULL,
+        'date_total_refund_payment' => NULL,
+        'date_total_refund_payment_percent' => NULL,
+        'date_total_refund_payment_marker' => NULL,
+        'date_refund_payment_last_update' => NULL,
+
+        // id: daily-rx-invoice-payment
+        'total_invoice_payment_date' => NULL,
+        'date_total_invoice_payment' => NULL,
+        'date_total_invoice_payment_percent' => NULL,
+        'date_total_invoice_payment_marker' => NULL,
+        'date_invoice_payment_last_update' => NULL,
+
+        // id: daily-rx-denied-payment
+        'total_denied_payment_date' => NULL,
+        'date_total_denied_payment' => NULL,
+        'date_total_denied_payment_percent' => NULL,
+        'date_total_denied_payment_marker' => NULL,
+        'date_denied_payment_last_update' => NULL,
+
+        // id: daily-rx-void-payment
+        'total_void_payment_date' => NULL,
+        'date_total_void_payment' => NULL,
+        'date_total_void_payment_percent' => NULL,
+        'date_total_void_payment_marker' => NULL,
+        'date_void_payment_last_update' => NULL,
+
+        // id: daily-rx-error-payment
+        'total_error_payment_date' => NULL,
+        'date_total_error_payment' => NULL,
+        'date_total_error_payment_percent' => NULL,
+        'date_total_error_payment_marker' => NULL,
+        'date_error_payment_last_update' => NULL,
+
+        // id: daily-sales-amount
+        'daily_sales_amount_date' => NULL,
+        'daily_sales_amount' => NULL,
+        'daily_sales_amount_percent' => NULL,
+        'daily_sales_amount_marker' => NULL,
+        'daily_sales_amount_last_update' => NULL,
+
+        // id: monthly-sales-amount
+        'monthly_sales_amount_month' => NULL,
+        'monthly_sales_amount_year' => NULL,
+        'monthly_sales_amount' => NULL,
+        'monthly_sales_amount_percent' => NULL,
+        'monthly_sales_amount_marker' => NULL,
+        'monthly_sales_amount_last_update' => NULL,
+
+
+        // id: monthly-chart-rx-and-order
+        'chart_compare_monthly_amount_year' => NULL,
+        'chart_compare_monthly_rx_label_prev' => NULL,
+        'chart_compare_monthly_rx_amounts_prev' => NULL,
+        'chart_compare_monthly_rx_label_current' => NULL,
+        'chart_compare_monthly_rx_amounts_current' => NULL,
+        'chart_compare_monthly_order_label_prev' => NULL,
+        'chart_compare_monthly_order_amounts_prev' => NULL,
+        'chart_compare_monthly_order_label_current' => NULL,
+        'chart_compare_monthly_order_amounts_current' => NULL,
+        'chart_compare_monthly_po_label_prev' => NULL,
+        'chart_compare_monthly_po_amounts_prev' => NULL,
+        'chart_compare_monthly_po_label_current' => NULL,
+        'chart_compare_monthly_po_amounts_current' => NULL,
+
+        // id: monthly-payments' => NULL,
+        'rx_payments_comparison' => NULL,
+        'rx_payments_last_update' => NULL,
+
+      ],
+    ],
+
+    'custom_example_rx_blocks' => [
+      'template' => 'mrs-dashboard-rx-blocks',
+      'variables' => [
+        // id: daily-order-submitted
+        'total_order_submitted_date' => NULL,
+        'date_total_order_submitted' => NULL,
+        'date_total_order_submitted_percent' => NULL,
+        'date_total_order_submitted_marker' => NULL,
+        'date_order_submitted_last_update' => NULL,
+
+        // id: rx-pending
+        'total_rx_pending_date' => NULL,
+        'date_total_rx_pending' => NULL,
+        'date_total_rx_pending_percent' => NULL,
+        'date_total_rx_pending_marker' => NULL,
+        'date_rx_pending_last_update' => NULL,
+
+        // id: rx-scheduled
+        'total_rx_scheduled_date' => NULL,
+        'date_total_rx_scheduled' => NULL,
+        'date_total_rx_scheduled_percent' => NULL,
+        'date_total_rx_scheduled_marker' => NULL,
+        'date_rx_scheduled_last_update' => NULL,
+
+        // id: rx-refills
+        'total_rx_refills_date' => NULL,
+        'date_total_rx_refills' => NULL,
+        'date_total_rx_refills_percent' => NULL,
+        'date_total_rx_refills_marker' => NULL,
+        'date_rx_refills_last_update' => NULL,
+
+        // id: expiring-rx
+        'total_expiring_rx_date' => NULL,
+        'date_total_expiring_rx' => NULL,
+        'date_total_expiring_rx_percent' => NULL,
+        'date_total_expiring_rx_marker' => NULL,
+        'date_expiring_rx_last_update' => NULL,
+
+        // id: expiring-arb
+        'total_expiring_arb_date' => NULL,
+        'date_total_expiring_arb' => NULL,
+        'date_total_expiring_arb_percent' => NULL,
+        'date_total_expiring_arb_marker' => NULL,
+        'date_expiring_arb_last_update' => NULL,
+
+        // id: expiring-cc
+        'total_expiring_cc_date' => NULL,
+        'date_total_expiring_cc' => NULL,
+        'date_total_expiring_cc_percent' => NULL,
+        'date_total_expiring_cc_marker' => NULL,
+        'date_expiring_cc_last_update' => NULL,
+
+        // id: silent-post-summary
+        'silent_post_summary_date' => NULL,
+        'silent_post_resolved' => NULL,
+        'silent_post_pending' => NULL,
+        'silent_post_resolved_percent' => NULL,
+        'silent_post_resolved_marker' => NULL,
+        'silent_post_pending_percent' => NULL,
+        'silent_post_pending_marker' => NULL,
+        'silent_post_summary_last_update' => NULL,
+
+        // id: monthly-clinic-vs-staff-rx-created
+        'clinic_vs_staff_rx_created_month' => NULL,
+        'monthly_clinic_total_slit_created' => NULL,
+        'monthly_clinic_total_scit_created' => NULL,
+        'monthly_staff_total_slit_created' => NULL,
+        'monthly_staff_total_scit_created' => NULL,
+        'monthly_clinic_total_slit_created_percent' => NULL,
+        'monthly_clinic_total_slit_created_marker' => NULL,
+        'monthly_clinic_total_scit_created_percent' => NULL,
+        'monthly_clinic_total_scit_created_marker' => NULL,
+        'monthly_staff_total_slit_created_percent' => NULL,
+        'monthly_staff_total_slit_created_marker' => NULL,
+        'monthly_staff_total_scit_created_percent' => NULL,
+        'monthly_staff_total_scit_created_marker' => NULL,
+        'monthly_clinic_vs_staff_rx_created_last_update' => NULL,
+
+        // id: monthly-clinic-vs-staff-rx-refill
+        'clinic_vs_staff_rx_refill_month' => NULL,
+        'monthly_clinic_total_slit_refill' => NULL,
+        'monthly_clinic_total_scit_refill' => NULL,
+        'monthly_staff_total_slit_refill' => NULL,
+        'monthly_staff_total_scit_refill' => NULL,
+        'monthly_clinic_total_slit_refill_percent' => NULL,
+        'monthly_clinic_total_slit_refill_marker' => NULL,
+        'monthly_clinic_total_scit_refill_percent' => NULL,
+        'monthly_clinic_total_scit_refill_marker' => NULL,
+        'monthly_staff_total_slit_refill_percent' => NULL,
+        'monthly_staff_total_slit_refill_marker' => NULL,
+        'monthly_staff_total_scit_refill_percent' => NULL,
+        'monthly_staff_total_scit_refill_marker' => NULL,
+        'monthly_clinic_vs_staff_rx_refill_last_update' => NULL,
+
+        // id: monthly-compare-clinic-vs-staff-rx
+        'comparison_table_clinic_vs_staff_rx' => NULL,
+        'clinic_vs_staff_rx_last_update' => NULL,
+
+        // id: monthly-chart-slit-vs-scit-created
+        'monthly_slit_vs_scit_created_year' => NULL,
+        'chart_monthly_compare_slit_created' => NULL,
+        'chart_monthly_compare_scit_created' => NULL,
+
+        // id: monthly-chart-slit-vs-scit-refills' => NULL,
+        'monthly_slit_vs_scit_refills_year' => NULL,
+        'chart_monthly_compare_slit_refills_label_prev' => NULL,
+        'chart_monthly_compare_slit_refills_label_current' => NULL,
+        'chart_monthly_compare_scit_refills_label_prev' => NULL,
+        'chart_monthly_compare_scit_refills_label_current' => NULL,
+        'chart_monthly_compare_slit_refills_prev' => NULL,
+        'chart_monthly_compare_slit_refills_current' => NULL,
+        'chart_monthly_compare_scit_refills_prev' => NULL,
+        'chart_monthly_compare_scit_refills_current' => NULL,
+
+        // id: monthly-slit-vs-scit
+        'comparison_table_slit_vs_scit' => NULL,
+        'rx_slit_vs_scit_last_update' => NULL,
+      ],
+    ],
+
+    'custom_example_home_blocks' => [
+      'template' => 'mrs-dashboard-home-blocks',
+      'variables' => [
+        'dashboard_sales_blocks' => NULL,
+        'dashboard_rx_blocks' => NULL,
+
+        // refresh interval
+        'dashboard_refresh_time' => NULL,
+        'dashboard_last_refresh_time' => NULL,
+      ],
+    ],
+
+  ];
+}
+
+/**
+ * Implementation of hook_cron()
+ */
+function custom_example_cron() {
+  $interval = \Drupal::state()->get('custom_example_cron_interval');  // 2 Hours
+  if (empty($interval)) {
+    $interval = 2 * 60 * 60;
+  }
+
+  $next_execution = \Drupal::state()->get('custom_example_cron_next_execution');
+  if (empty($next_execution)) {
+    $next_execution = 0;
+  }
+
+  if (time() >= $next_execution) {
+    // Call the workers
+    \Drupal::service('dashboard.helper')->processQueuePages();
+
+    \Drupal::state()->set('custom_example_cron_next_execution', time() + $interval);
+    \Drupal::logger('custom_example')->info('Dashboard cron run completed @ ' . date('Y-m-d H:i:s'));
+  }
+}

@@ -1,0 +1,486 @@
+custom_example.settings:
+  path: '/custom_example/settings'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::dashboardSettings'
+    _title: 'Dashboard Settings'
+  requirements:
+    _permission: 'administer mrs dashboard'
+
+custom_example.dashboard:
+  path: '/custom_example'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewPage'
+    _title: 'Dashboard'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.cron:
+  path: '/custom_example/cron'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::cronPage'
+    _title: 'Dashboard Cron'
+  requirements:
+    _permission: 'administer mrs dashboard'
+
+custom_example.run_generate:
+  path: '/custom_example/run/generate'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::runGenerate'
+    _title: 'Dashboard Cron'
+  requirements:
+    _permission: 'administer mrs dashboard'
+
+custom_example.run_clean:
+  path: '/custom_example/run/clean'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::runClean'
+    _title: 'Clean All Data'
+  requirements:
+    _permission: 'administer mrs dashboard'
+
+# Sections auto refresh
+custom_example.sections_refresh:
+  path: '/custom_example/sections/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::sectionsRefresh'
+    _title: 'Sections: Refresh'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.sections_refresh_home:
+  path: '/custom_example/sections/refresh/home'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::sectionsRefreshHome'
+    _title: 'Sections: Refresh Frontpage'
+  requirements:
+    _permission: 'view dashboard'
+
+# Refresh links
+custom_example.total_rx_amount_refresh:
+  path: '/custom_example/total_rx_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalRxAmount'
+    _title: 'Refresh: Total Rx Amount'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_order_amount_refresh:
+  path: '/custom_example/total_order_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalOrderAmount'
+    _title: 'Refresh: Total Order Amount'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_weekly_amount_refresh:
+  path: '/custom_example/total_weekly_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalWeeklyAmount'
+    _title: 'Refresh: Total Weekly Amount'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_monthly_amount_refresh:
+  path: '/custom_example/total_monthly_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalMonthlyAmount'
+    _title: 'Refresh: Total Monthly Amount'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_slit_scit_created_refresh:
+  path: '/custom_example/total_slit_scit_created/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalSlitScitCreated'
+    _title: 'Refresh: Total SLIT/SCIT Created'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_slit_scit_refills_refresh:
+  path: '/custom_example/total_slit_scit_refills/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalSlitScitRefills'
+    _title: 'Refresh: Total SLIT/SCIT Refills'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_payments_refresh:
+  path: '/custom_example/total_payments/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalPayments'
+    _title: 'Refresh: Total Payments'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_order_submitted_refresh:
+  path: '/custom_example/total_order_submitted/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalOrderSubmitted'
+    _title: 'Refresh: Total Order Submitted'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_rx_pending_refresh:
+  path: '/custom_example/total_rx_pending/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalRxPending'
+    _title: 'Refresh: Total Rx Pending'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_rx_scheduled_refresh:
+  path: '/custom_example/total_rx_scheduled/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalRxScheduled'
+    _title: 'Refresh: Total Rx Scheduled'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_upcoming_rx_refills_refresh:
+  path: '/custom_example/total_upcoming_rx_refills/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalUpcomingRxRefills'
+    _title: 'Refresh: Total Upcoming Rx Refills'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_rx_refresh:
+  path: '/custom_example/total_expiring_rx/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalTotalExpiringRx'
+    _title: 'Refresh: Total Expiring Rx'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_arb_refresh:
+  path: '/custom_example/total_expiring_arb/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalTotalExpiringArb'
+    _title: 'Refresh: Total Expiring ARB'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_cc_refresh:
+  path: '/custom_example/total_expiring_cc/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalExpiringCreditCard'
+    _title: 'Refresh: Total Expiring Credit Card'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_profile_cc_refresh:
+  path: '/custom_example/total_expiring_profile_cc/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalExpiringProfileCreditCard'
+    _title: 'Refresh: Total Expiring Profile Credit Card'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_clinics_refresh:
+  path: '/custom_example/total_clinics/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalClinics'
+    _title: 'Refresh: Total Clinics'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.silent_post_summary_refresh:
+  path: '/custom_example/silent_post_summary/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshSilentPostSummary'
+    _title: 'Refresh: Silent Post Summary'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.rx_payments_summary_refresh:
+  path: '/custom_example/rx_payments_summary/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshRxPaymentSummary'
+    _title: 'Refresh: Rx Payment Summary'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.rx_slit_vs_scit_refresh:
+  path: '/custom_example/rx_slit_vs_scit/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshRxSlitVsScit'
+    _title: 'Refresh: Rx SLIT vs SCIT'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_po_amount_refresh:
+  path: '/custom_example/total_po_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalPoAmount'
+    _title: 'Refresh: PO and PO Refund'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_weekly_po_amount_refresh:
+  path: '/custom_example/total_weekly_po_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalWeeklyPoAmount'
+    _title: 'Refresh: Weekly PO and PO Refund'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_monthly_po_amount_refresh:
+  path: '/custom_example/total_monthly_po_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalMonthlyPoAmount'
+    _title: 'Refresh: Monthly PO and PO Refund'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.daily_sales_amount_refresh:
+  path: '/custom_example/daily_sales_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalDailySalesAmount'
+    _title: 'Refresh: Daily Sales Amount'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.monthly_sales_amount_refresh:
+  path: '/custom_example/monthly_sales_amount/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshTotalMonthlySalesAmount'
+    _title: 'Refresh: Monthly Sales Amount'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.daily_clinic_vs_staff_rx_created_refresh:
+  path: '/custom_example/clinic_vs_staff_rx_created/daily/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshDailyClinicVsStaffRxCreated'
+    _title: 'Refresh: Daily Clinic vs Staff Rx Created'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.monthly_clinic_vs_staff_rx_created_refresh:
+  path: '/custom_example/clinic_vs_staff_rx_created/monthly/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshMonthlyClinicVsStaffRxCreated'
+    _title: 'Refresh: Monthly Clinic vs Staff Rx Created'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.daily_clinic_vs_staff_rx_refill_refresh:
+  path: '/custom_example/clinic_vs_staff_rx_refill/daily/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshDailyClinicVsStaffRxRefills'
+    _title: 'Refresh: Daily Clinic vs Staff Rx Refills'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.monthly_clinic_vs_staff_rx_refill_refresh:
+  path: '/custom_example/clinic_vs_staff_rx_refill/monthly/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshMonthlyClinicVsStaffRxRefills'
+    _title: 'Refresh: Monthly Clinic vs Staff Rx Refills'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.rx_clinic_vs_staff_refresh:
+  path: '/custom_example/rx_clinic_vs_staff/refresh'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::refreshRxClinicVsStaff'
+    _title: 'Refresh: Clinic vs Staff Rx Created/Refills Table'
+  requirements:
+    _permission: 'view dashboard'
+
+
+# Display report in modal links
+custom_example.total_expiring_arb_view:
+  path: '/custom_example/total_expiring_arb/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalExpiringArb'
+    _title: 'View: Expiring ARB'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_order_submitted_view:
+  path: '/custom_example/total_order_submitted/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalOrderSubmitted'
+    _title: 'View: Total Order Submitted'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_rx_pending_view:
+  path: '/custom_example/total_rx_pending/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalRxPending'
+    _title: 'View: Total Rx Pending'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_rx_scheduled_view:
+  path: '/custom_example/total_rx_scheduled/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalRxScheduled'
+    _title: 'View: Total Rx Scheduled'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_rx_refills_view:
+  path: '/custom_example/total_rx_refills/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalRxRefills'
+    _title: 'View: Total Rx Refills'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_rx_view:
+  path: '/custom_example/total_expiring_rx/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalExpiringRx'
+    _title: 'View: Total Expiring Rx'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_cc_view:
+  path: '/custom_example/total_expiring_cc/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalExpiringCreditCard'
+    _title: 'View: Total Expiring Credit Card'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.total_expiring_profile_cc_view:
+  path: '/custom_example/total_expiring_profile_cc/view'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::viewTotalExpiringProfileCreditCard'
+    _title: 'View: Total Expiring Profile Credit Card'
+  requirements:
+    _permission: 'view dashboard'
+
+# Reports
+custom_example.report.payments_daily:
+  path: '/custom_example/report/payments/daily/{payment_type}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportDailyPayments'
+    _title: 'Report: Daily Payments'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      payment_type:
+        type: String
+
+custom_example.report.payments_monthly:
+  path: '/custom_example/report/payments/monthly/{payment_type}/{month}/{year}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportMonthlyPayments'
+    _title: 'Report: Monthly Payments'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      payment_type:
+        type: String
+      month:
+        type: Integer
+      year:
+        type: Integer
+
+custom_example.report.sales_daily:
+  path: '/custom_example/report/sales/daily'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportDailySales'
+    _title: 'Report: Daily Sales'
+  requirements:
+    _permission: 'view dashboard'
+
+custom_example.report.sales_monthly:
+  path: '/custom_example/report/sales/monthly/{month}/{year}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportMonthlySales'
+    _title: 'Report: Monthly Sales'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      month:
+        type: Integer
+      year:
+        type: Integer
+
+custom_example.report.rx_created_refills_daily:
+  path: '/custom_example/report/rx_created_refills/daily/{rx_base_type}/{action_type}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportDailyRxCreatedRefills'
+    _title: 'Report: Daily Rx Created/Refills'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      rx_base_type:
+        type: String
+      action_type:
+        type: String
+
+custom_example.report.rx_created_refills_monthly:
+  path: '/custom_example/report/rx_created_refills/monthly/{rx_base_type}/{action_type}/{month}/{year}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportMonthlyRxCreatedRefills'
+    _title: 'Report: Monthly Rx Created/Refills'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      rx_base_type:
+        type: String
+      action_type:
+        type: String
+      month:
+        type: Integer
+      year:
+        type: Integer
+
+custom_example.report.clinic_vs_staff_created_refills_daily:
+  path: '/custom_example/report/clinic_vs_staff_created_refills/daily/{action_type}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportDailyClinicVsStaffRxCreatedRefills'
+    _title: 'Report: Daily Clinic vs Staff Rx Created/Refills'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      action_type:
+        type: String
+
+custom_example.report.clinic_vs_staff_created_refills_list_monthly:
+  path: '/custom_example/report/clinic_vs_staff_created_refills/list/monthly/{action_type}/{month}/{year}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportMonthlyClinicVsStaffRxCreatedRefillsList'
+    _title: 'Report: Monthly Clinic vs Staff Rx Created/Refills List'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      action_type:
+        type: String
+      month:
+        type: Integer
+      year:
+        type: Integer
+
+custom_example.report.clinic_vs_staff_created_refills_monthly:
+  path: '/custom_example/report/clinic_vs_staff_created_refills/monthly/{user_type}/{rx_base_type}/{action_type}/{month}/{year}'
+  defaults:
+    _controller: '\Drupal\custom_example\Controller\DashboardController::reportMonthlyClinicVsStaffRxCreatedRefills'
+    _title: 'Report: Monthly Clinic vs Staff Rx Created/Refills'
+  requirements:
+    _permission: 'view dashboard'
+  options:
+    parameters:
+      user_type:
+        type: String
+      rx_base_type:
+        type: String
+      action_type:
+        type: String
+      month:
+        type: Integer
+      year:
+        type: Integer

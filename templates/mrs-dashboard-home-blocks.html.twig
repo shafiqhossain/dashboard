@@ -1,0 +1,20 @@
+<div class="mrs-dashboard-home">
+	<div class="collapsible dashboard-blocks-title" id="section1">Dashboard: Sales<span></span></div>
+	<div class="mrs-dashboard-container">
+	  {{ dashboard_sales_blocks|raw }}
+	</div>
+
+	<div class="collapsible dashboard-blocks-title" id="section2">Dashboard: Rx<span></span></div>
+	<div class="mrs-dashboard-container">
+	  {{ dashboard_rx_blocks|raw }}
+	</div>
+
+	<div class="mrs-dashboard-refresh clearfix">
+		<div class="dashboard-block-actions" id="dashboard-block-actions">
+		  <div class="dashboard-block-content">
+		    <span class="refresh-time-wrapper"><span class="refresh-label">Refresh Time: </span><span id="dashboard-refresh-time">{{ dashboard_refresh_time }}</span><span class="refresh-label"> minutes.</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="refresh-label"> Last refreshed: </span><span id="dashboard-last-refresh-time">{{ dashboard_last_refresh_time }}</span></span>
+		  </div>
+		</div>
+	</div>
+	<div id="mrs-dashboard-refresh-wrapper"></div>
+</div>

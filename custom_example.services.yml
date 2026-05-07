@@ -1,0 +1,12 @@
+services:
+  dashboard.helper:
+    class: Drupal\custom_example\Service\DashboardHelper
+    arguments: ['@entity_type.manager', '@current_user', '@database', '@logger.factory', '@messenger', '@config.factory', '@queue']
+
+  dashboard.manager:
+    class: Drupal\custom_example\Service\DashboardManager
+    arguments: ['@entity_type.manager', '@current_user', '@database', '@logger.factory', '@messenger', '@config.factory']
+
+  dashboard.refresh_manager:
+    class: Drupal\custom_example\Service\DashboardRefreshManager
+    arguments: ['@entity_type.manager', '@current_user', '@database', '@logger.factory', '@messenger', '@config.factory', '@dashboard.helper', '@dashboard.manager']

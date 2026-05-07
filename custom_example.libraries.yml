@@ -1,0 +1,55 @@
+dashboard-style:
+  version: 1.x
+  css:
+    component:
+      assets/css/custom_example.css: {}
+  js:
+    assets/js/custom_example.js: {}
+  dependencies:
+    - core/jquery
+    - core/core.once
+    - medicom/materialize
+
+dashboard-home-style:
+  version: 1.x
+  css:
+    component:
+      assets/css/custom_example_home.css: {}
+  js:
+    assets/js/custom_example_home.js: {}
+  dependencies:
+    - core/jquery
+    - core/core.once
+    - medicom/materialize
+
+high-chart-style:
+  version: 1.x
+  js:
+    /libraries/highcharts/code/highcharts.js: {}
+    /libraries/highcharts/code/modules/exporting.js: {}
+    /libraries/jquery.cookie/src/jquery.cookie.js: {}
+    /libraries/collapsible/jquery.collapsible.js: {}
+  dependencies:
+    - core/jquery
+    - core/core.once
+
+monthly-rx-order-amount-container:
+  js:
+    assets/js/monthly-rx-order-amount-container.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+
+monthly-slit-vs-scit-created-container:
+  js:
+    assets/js/monthly-slit-vs-scit-created-container.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+
+monthly-slit-vs-scit-refills-container:
+  js:
+    assets/js/monthly-slit-vs-scit-refills-container.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
